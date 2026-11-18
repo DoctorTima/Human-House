@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<script>(function(){var p=location.pathname;if(!/\/$/.test(p)&&!/\.html?$/.test(p)){location.replace(p+'/'+location.search+location.hash);}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Павильон Human House · Open Village 2027</title>
+<meta name="description" content="3D-модель стенда Human House 4 × 3 м: LCD, LED и каркас. Покрутите или поставьте на пол в AR.">
+<meta name="theme-color" content="#100F0C">
+<meta name="hh-assets" content="assets/hh-stand-v4/models.json">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Павильон Human House · Open Village 2027">
+<meta property="og:description" content="4 × 3 м · 12 м² · высота 3 м. Откройте 3D-модель стенда и посмотрите его в пространстве.">
+<meta property="og:image" content="img/og-stand.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/hh-logo.png">
+<link rel="preload" href="fonts/golos-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/golos-800-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--bg:#100F0C;--card:#1A1814;--line:#2E2B25;--line2:#3D3931;--milk:#F3F0E7;--muted:#B6B0A3;--dim:#8C877B;--acc:#BC4F2B;--acc2:#E07A55;--accH:#A44323;
+--studio:linear-gradient(180deg,#8F8D88 0%,#99968F 36%,#C8C4BD 51%,#D8D5CF 100%);--r:14px;--sp:clamp(16px,4vw,32px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--milk);font-family:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--acc2)}a:hover{color:#F09A7A}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 max(var(--sp),env(safe-area-inset-right)) 0 max(var(--sp),env(safe-area-inset-left))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:max(14px,env(safe-area-inset-top));padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--milk);min-height:44px}
+.brand img{width:32px;height:32px;object-fit:contain}
+.brand span{font-weight:700;font-size:18px;letter-spacing:.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;min-width:44px;padding:0 18px;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--milk);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background-color .12s ease,border-color .12s ease}
+.btn:hover{background:#221F1A}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:var(--accH);border-color:var(--accH)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn svg{width:18px;height:18px;flex:none}
+.head{padding:4px 0 18px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2)}
+h1{margin:6px 0 4px;font-size:clamp(28px,5vw,48px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.dims{margin:0;color:var(--muted);font-size:clamp(15px,2vw,18px)}
+.stage{position:relative;width:100%;aspect-ratio:1000/720;max-height:min(78svh,820px);min-height:260px;border-radius:var(--r);overflow:hidden;background:var(--studio)}
+@supports not (height:1svh){.stage{max-height:min(78vh,820px)}}
+.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .28s ease}
+model-viewer{position:absolute;inset:0;width:100%;height:100%;background:transparent;--poster-color:transparent;--progress-bar-height:0px}
+model-viewer:not(:defined){display:none}
+.stage.ready .poster{opacity:0}
+.bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(16,15,12,.18);opacity:0;transition:opacity .2s ease}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .15s linear}
+.stage.loading .bar{opacity:1}
+.chip{position:absolute;left:12px;top:12px;padding:6px 12px;border-radius:999px;background:rgba(16,15,12,.82);color:var(--milk);font-size:13px;font-weight:600;pointer-events:none}
+.chip[hidden]{display:none}
+.overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;background:rgba(16,15,12,.72)}
+.overlay[hidden]{display:none}
+.overlay p{margin:0;max-width:520px;font-size:15px;line-height:1.5}
+.overlay code{font-size:12px;color:var(--muted);word-break:break-all}
+.panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:16px 0 6px}
+.seg{display:inline-flex;padding:4px;gap:4px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.seg button{min-height:44px;min-width:72px;padding:0 16px;border:0;border-radius:9px;background:transparent;color:var(--muted);font-size:15px;font-weight:700;cursor:pointer;transition:background-color .12s ease,color .12s ease}
+.seg button[aria-checked="true"]{background:var(--milk);color:#100F0C}
+.seg button:not([aria-checked="true"]):hover{color:var(--milk);background:#24211C}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.cap{margin:4px 0 0;font-size:15px;color:var(--muted);min-height:1.5em}
+.cap b{color:var(--milk);font-weight:600}
+.hint{margin:10px 0 0;padding:12px 14px;border-radius:10px;background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:14px;line-height:1.5}
+.hint[hidden]{display:none}
+.hint b{color:var(--milk)}
+.details{padding:28px 0 8px}
+.details h2{margin:0 0 12px;font-size:20px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+figure{margin:0;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+figure img{display:block;width:100%;height:auto;aspect-ratio:1050/750;object-fit:cover;background:#8F8D88}
+figcaption{padding:10px 12px;font-size:14px;color:var(--muted)}
+.foot{padding:20px 0 max(28px,env(safe-area-inset-bottom));color:var(--dim);font-size:13px;line-height:1.55;border-top:1px solid var(--line);margin-top:24px}
+dialog{width:min(420px,calc(100vw - 32px));padding:0;border:1px solid var(--line2);border-radius:16px;background:var(--card);color:var(--milk)}
+dialog::backdrop{background:rgba(8,7,6,.72)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg h3{margin:0;font-size:19px;font-weight:700}
+.dlg p{margin:0;color:var(--muted);font-size:14px}
+.qr{align-self:center;width:228px;height:228px;padding:10px;background:#fff;border-radius:12px}
+.qr svg{display:block;width:100%;height:100%}
+.url{width:100%;min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:#100F0C;color:var(--milk);font:14px/1.2 'Golos Text',system-ui,sans-serif}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border-radius:10px;background:var(--milk);color:#100F0C;font-size:14px;font-weight:600;box-shadow:0 6px 24px rgba(0,0,0,.35);z-index:50}
+.toast[hidden]{display:none}
+.arfallback{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0}
+@media (max-width:720px){
+  .top{padding-bottom:8px}.brand img{width:28px;height:28px}.brand span{font-size:16px}
+  .head{padding:0 0 12px}
+  .stage{border-radius:10px;aspect-ratio:4/3.6}
+  .panel{flex-direction:column;align-items:stretch}
+  .seg{display:flex}.seg button{flex:1;min-width:0;padding:0 8px}
+  .acts .btn{flex:1 1 auto}
+  .grid{grid-template-columns:minmax(0,1fr);gap:10px}
+  #shareTop .lbl{display:none}
+}
+@media (max-width:720px) and (min-width:480px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}figcaption{font-size:12px;padding:8px}}
+@media (max-height:500px) and (orientation:landscape){.stage{max-height:calc(100svh - 24px);aspect-ratio:auto;height:calc(100svh - 24px)}.head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}h1{font-size:24px;margin:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="root">
+  <header class="top">
+    <a class="brand" href="/" aria-label="Human House — на главную"><img src="img/hh-logo.png" alt="" width="32" height="32"><span>Human House</span></a>
+    <button class="btn" id="shareTop" type="button" aria-label="Поделиться ссылкой на выбранную версию стенда"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg><span class="lbl">Поделиться</span></button>
+  </header>
+
+  <section class="head" aria-labelledby="ttl">
+    <div class="eyebrow">Open Village 2027</div>
+    <h1 id="ttl">Павильон Human House</h1>
+    <p class="dims">4 × 3 м · 12 м² · высота 3 м</p>
+  </section>
+
+  <main>
+    <div class="stage" id="stage">
+      <img class="poster" id="poster" alt="Стенд Human House" decoding="async" fetchpriority="high">
+      <model-viewer id="mv" aria-label="3D-модель стенда Human House. Перетаскивайте, чтобы вращать; щипок или колесо — приблизить"
+        camera-controls touch-action="pan-y" interaction-prompt="none" disable-pan
+        camera-orbit="-22deg 80deg 8.2m" camera-target="auto 1.4m auto" field-of-view="30deg" min-camera-orbit="auto 25deg 3.5m" max-camera-orbit="auto 95deg 18m" min-field-of-view="18deg" max-field-of-view="40deg"
+        interpolation-decay="120" environment-image="neutral" exposure="1.05" shadow-intensity="1" shadow-softness="0.85"
+        ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor" ar-scale="fixed" reveal="auto" loading="eager">
+        <button slot="ar-button" hidden></button>
+      </model-viewer>
+      <div class="chip" id="chip" hidden></div>
+      <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+      <div class="overlay" id="err" role="alert" hidden>
+        <p id="errText">Модель не загрузилась.</p>
+        <code id="errPath"></code>
+        <button class="btn pri" id="retry" type="button">Повторить</button>
+      </div>
+      <a class="arfallback" id="arLink" rel="ar" href="#" aria-hidden="true" tabindex="-1"><img alt="" src="img/hh-logo.png" width="1" height="1"></a>
+    </div>
+
+    <div class="panel">
+      <div class="seg" role="radiogroup" aria-label="Версия стенда" id="seg">
+        <button type="button" role="radio" data-v="lcd" aria-checked="true">LCD</button>
+        <button type="button" role="radio" data-v="led" aria-checked="false" tabindex="-1">LED</button>
+        <button type="button" role="radio" data-v="frame" aria-checked="false" tabindex="-1">Каркас</button>
+      </div>
+      <div class="acts">
+        <button class="btn pri" id="arBtn" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg>Посмотреть в пространстве</button>
+        <button class="btn pri" id="phoneBtn" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Открыть на телефоне</button>
+        <button class="btn" id="resetBtn" type="button">Исходный ракурс</button>
+      </div>
+    </div>
+    <p class="cap" id="cap" aria-live="polite"></p>
+    <p class="hint" id="hint" role="status" hidden></p>
+
+    <section class="details" aria-labelledby="dt">
+      <h2 id="dt">Детали</h2>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">Модель стенда в масштабе 1:1. 3D работает в браузере; просмотр в пространстве — на совместимых iPhone, iPad и Android с камерой. Если AR недоступен, 3D остаётся рабочим.</footer>
+</div>
+
+<dialog id="dlgPhone" aria-labelledby="dpT">
+  <form method="dialog" class="dlg">
+    <h3 id="dpT">Откройте на телефоне</h3>
+    <p>Наведите камеру телефона на код — откроется эта версия стенда. На телефоне можно поставить его на пол в масштабе 1:1.</p>
+    <div class="qr" id="qr" role="img" aria-label="QR-код ссылки на стенд"></div>
+    <label class="sr" for="urlPhone">Ссылка</label>
+    <input class="url" id="urlPhone" readonly>
+    <div class="row"><button class="btn pri" type="button" id="copyPhone">Скопировать ссылку</button><button class="btn" value="close">Закрыть</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgAr" aria-labelledby="daT">
+  <form method="dialog" class="dlg">
+    <h3 id="daT">Найдите свободный участок пола 4 × 3 м</h3>
+    <p id="arNote">Стенд встанет на пол в реальном размере: 4 м по фасаду, 3 м в глубину, 3 м в высоту. Медленно поведите камерой по полу, пока он не определится.</p>
+    <div class="row"><button class="btn pri" type="button" id="arGo">Запустить</button><button class="btn" value="close">Отмена</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgShare" aria-labelledby="dsT">
+  <form method="dialog" class="dlg">
+    <h3 id="dsT">Ссылка на стенд</h3>
+    <p>Скопируйте ссылку вручную — браузер не дал доступ к буферу обмена.</p>
+    <label class="sr" for="urlShare">Ссылка</label>
+    <input class="url" id="urlShare" readonly>
+    <div class="row"><button class="btn" value="close">Готово</button></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="vendor/qrcode-generator-1.4.4.js" defer></script>
+<script type="module" src="vendor/model-viewer.min.js"></script>
+<script src="stand.js" defer></script>
+</body>
+</html>

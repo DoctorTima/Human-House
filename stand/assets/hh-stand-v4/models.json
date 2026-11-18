@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "defaultView": "lcd",
+  "dimensionsMeters": {
+    "front": 4,
+    "depth": 3,
+    "height": 3
+  },
+  "variants": {
+    "lcd": {
+      "label": "LCD",
+      "src": "HH_OpenSides_LCD.glb",
+      "iosSrc": "HH_OpenSides_LCD.usdz",
+      "poster": "images/lcd.webp",
+      "screenMeters": [
+        2.17,
+        1.22
+      ]
+    },
+    "led": {
+      "label": "LED",
+      "src": "HH_OpenSides_LED.glb",
+      "iosSrc": "HH_OpenSides_LED.usdz",
+      "poster": "images/led.webp",
+      "screenMeters": [
+        3.2,
+        1.8
+      ]
+    },
+    "frame": {
+      "label": "Каркас",
+      "src": "HH_Frame.glb",
+      "iosSrc": "HH_Frame.usdz",
+      "poster": "images/frame.webp",
+      "screenMeters": null
+    }
+  },
+  "details": [
+    {
+      "label": "Стойка с образцами",
+      "src": "images/detail-blocks.webp"
+    },
+    {
+      "label": "Полки со стороны сотрудника",
+      "src": "images/detail-staff.webp"
+    },
+    {
+      "label": "Обзор сбоку",
+      "src": "images/detail-side.webp"
+    }
+  ]
+}
