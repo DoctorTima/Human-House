@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100E0C">
+<title>Конфигуратор Гранат — Human House</title>
+<meta name="description" content="Настройте дом «Гранат» в 3D: фасад, кровля, окна, терраса и планировка. Просмотр в AR на iPhone и Android.">
+<link rel="stylesheet" href="./fonts/fonts.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="./style.css?v=5">
+</head>
+<body>
+<header class="site">
+  <div class="site-in">
+    <a target="_top" class="brand" href="https://humhouse.ru/" aria-label="Human House, главная">
+      <img src="https://static.tildacdn.com/tild6536-6236-4063-a236-396466393166/noroot.png" alt="" width="36" height="36">
+      <span>Human House</span>
+    </a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a target="_top" href="https://humhouse.ru/">Проекты</a>
+      <a target="_top" href="https://humhouse.ru/granat">Гранат</a>
+      <a href="./" aria-current="page">Конфигуратор</a>
+    </nav>
+    <div class="site-cta">
+      <a class="phone" href="tel:+79250666020">+7 925 066‑60‑20</a>
+      <a class="btn-primary" target="_top" href="https://humhouse.ru/granat">Оставить заявку</a>
+    </div>
+    <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Основная навигация">
+      <a target="_top" href="https://humhouse.ru/">Проекты</a>
+      <a target="_top" href="https://humhouse.ru/granat">Гранат</a>
+      <a href="./" aria-current="page">Конфигуратор</a>
+    </nav>
+    <a class="phone" href="tel:+79250666020">+7 925 066‑60‑20</a>
+    <a class="btn-primary" target="_top" href="https://humhouse.ru/granat">Оставить заявку</a>
+  </div>
+</header>
+
+<div class="titlebar">
+  <div class="title-l">
+    <div class="crumbs">
+      <a target="_top" href="https://humhouse.ru/granat">← Вернуться к проекту</a>
+      <a class="alt" target="_top" href="https://humhouse.ru/configurator">Конфигуратор Опал</a>
+    </div>
+    <h1>Конфигуратор Гранат</h1>
+  </div>
+  <ul class="facts" aria-label="Параметры дома">
+    <li>103,27 м²</li><li>1 этаж</li><li>2 спальни + кабинет</li><li>Терраса 12,34 м²</li>
+  </ul>
+</div>
+
+<main class="workspace">
+  <section class="visual" id="visual" aria-label="Модель и чертежи">
+    <div id="stage">
+      <canvas id="canvas" aria-label="Трёхмерная модель дома. Поверните мышью или пальцем."></canvas>
+      <div id="paper" hidden><img alt="План дома Гранат" id="planImage"></div>
+      <span id="viewTag">Внешний вид</span>
+      <div id="load" role="status">Загружаем «Гранат»…</div>
+
+      <div class="ov ov-top">
+        <div class="tools" id="modes" role="group" aria-label="Режим просмотра"></div>
+        <div class="icons">
+          <button type="button" class="ico" id="resetCam" aria-label="Сбросить камеру" title="Сбросить камеру"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+          <button type="button" class="ico" id="fsBtn" aria-label="Во весь экран" title="Во весь экран"><svg viewBox="0 0 24 24" aria-hidden="true" class="i-max"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="i-min"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg></button>
+        </div>
+      </div>
+      <div class="ov ov-bot">
+        <div class="camera" id="cameras" role="group" aria-label="Ракурс камеры"></div>
+        <div id="arSlot"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside id="panel" aria-label="Параметры дома">
+    <div class="chapter" hidden><p class="eyebrow" id="num"></p><h2 id="sectionTitle"></h2></div>
+    <nav aria-label="Разделы конфигуратора" id="tabs"></nav>
+    <div id="options"></div>
+  </aside>
+</main>
+
+<div class="bottom">
+  <div class="bar">
+    <div class="bar-l">
+      <span class="bar-k" id="sumHead">Текущая комплектация</span>
+      <span class="bar-v" id="sumLine">Загружаем выбранные материалы…</span>
+    </div>
+    <div class="bar-r">
+      <button type="button" class="btn-ghost" id="toMine">Мой вариант и выгрузка</button>
+      <a class="btn-primary btn-lg" target="_top" href="https://humhouse.ru/granat">Получить расчёт</a>
+    </div>
+  </div>
+  <p class="disclaimer">Цвета на экране приблизительные — точный оттенок сверяйте с образцом материала. Альтернативные варианты террасы и планировки согласуются с проектировщиком.</p>
+</div>
+
+<dialog id="ar">
+  <button id="close" class="close" aria-label="Закрыть">×</button>
+  <h2>Дом в AR</h2>
+  <p id="arMessage"></p>
+  <div class="arlinks" id="arlinks"></div>
+</dialog>
+<noscript>Для просмотра 3D включите JavaScript.</noscript>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var b = $('burger'), m = $('menu');
+  b.addEventListener('click', function () { var open = m.hidden; m.hidden = !open; b.setAttribute('aria-expanded', String(open)); b.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню'); });
+  m.addEventListener('click', function (e) { if (e.target.closest('a')) { m.hidden = true; b.setAttribute('aria-expanded', 'false'); } });
+
+  var BOX = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>';
+  var modes = $('modes'), slot = $('arSlot'), tabs = $('tabs');
+  function moveAr() {
+    var ar = modes.querySelector('button.ar'); if (!ar) return;
+    var t = ar.textContent.trim();
+    ar.innerHTML = BOX + '<span class="ar-l">' + t + '</span><span class="ar-s">AR</span>';
+    ar.setAttribute('aria-label', t);
+    slot.replaceChildren(ar);
+  }
+  new MutationObserver(moveAr).observe(modes, { childList: true });
+  new MutationObserver(function () {
+    tabs.querySelectorAll('button').forEach(function (x) { if (x.textContent.trim() === 'Комплектация') x.textContent = 'Стены и комплектация'; });
+  }).observe(tabs, { childList: true });
+
+  var vis = $('visual'), fs = $('fsBtn');
+  function setFs(on) {
+    vis.classList.toggle('fs', on); document.body.classList.toggle('noscroll', on);
+    fs.setAttribute('aria-label', on ? 'Свернуть' : 'Во весь экран'); fs.title = on ? 'Свернуть' : 'Во весь экран';
+    requestAnimationFrame(function () { window.dispatchEvent(new Event('resize')); });
+  }
+  fs.addEventListener('click', function () { setFs(!vis.classList.contains('fs')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && vis.classList.contains('fs')) setFs(false); });
+  $('resetCam').addEventListener('click', function () {
+    var out = modes.querySelector('button'); if (out && out.getAttribute('aria-pressed') !== 'true') out.click();
+    setTimeout(function () { var c = $('cameras').querySelector('button'); if (c) c.click(); }, 60);
+  });
+
+  $('toMine').addEventListener('click', function () {
+    var t = [].slice.call(tabs.querySelectorAll('button')).filter(function (x) { return x.textContent.trim() === 'Мой вариант'; })[0];
+    if (t) t.click();
+    var p = $('panel');
+    if (window.matchMedia('(max-width: 899px)').matches) window.scrollTo({ top: p.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+    else p.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var CAT = null;
+  function lab(k, id) { var l = CAT && CAT.palettes[k]; var o = l && l.filter(function (x) { return x.id === id; })[0]; return o ? o.label : ''; }
+  function find(list, id) { var o = (list || []).filter(function (x) { return x.id === id; })[0]; return o ? o.label : ''; }
+  function summary() {
+    if (!CAT) return;
+    var s = {}; try { s = JSON.parse(localStorage.getItem('hh-granat-v1') || '{}'); } catch (e) {}
+    var st = find(CAT.styles, s.style);
+    $('sumHead').textContent = 'Текущая комплектация · ' + (st || 'свой вариант');
+    var parts = [];
+    if (s.facade) parts.push('Фасад — ' + lab('facade', s.facade));
+    if (s.accent) parts.push('вставки — ' + lab('accent', s.accent).toLowerCase());
+    if (s.roof) parts.push('кровля — ' + (find(CAT.roofTypes, s.roofType) ? find(CAT.roofTypes, s.roofType).split(' · ')[0].toLowerCase() + ', ' : '') + lab('roof', s.roof).toLowerCase());
+    if (s.frames) parts.push('рамы — ' + lab('frames', s.frames).toLowerCase());
+    if (s.terrace) parts.push('терраса — ' + find(CAT.terraces, s.terrace).toLowerCase());
+    if (s.layout) parts.push(s.layout === 'study' ? 'с кабинетом' : 'с гостевой спальней');
+    $('sumLine').textContent = parts.length ? parts.join(' · ') : 'Базовая комплектация «Граната»';
+  }
+  fetch('catalog.json').then(function (r) { return r.json(); }).then(function (c) { CAT = c; summary(); }).catch(function () { $('sumLine').textContent = 'Выбор сохраняется — откройте «Мой вариант», чтобы увидеть его целиком'; });
+  ['click', 'change'].forEach(function (ev) { document.addEventListener(ev, function () { setTimeout(summary, 80); }, true); });
+})();
+</script>
+<script src="./fix.js?v=6"></script>
+<script defer src="./app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+{
+  "palettes": {
+    "facade": [
+      {
+        "id": "ivory",
+        "label": "Молочный",
+        "color": "#E8E3D8",
+        "kind": "plaster",
+        "tone": "light"
+      },
+      {
+        "id": "white",
+        "label": "Белый",
+        "color": "#F1EEE7",
+        "kind": "plaster",
+        "tone": "light"
+      },
+      {
+        "id": "sand",
+        "label": "Песочный",
+        "color": "#D4C4AF",
+        "kind": "plaster",
+        "tone": "warm"
+      },
+      {
+        "id": "taupe",
+        "label": "Тауп",
+        "color": "#B8ADA0",
+        "kind": "plaster",
+        "tone": "warm"
+      },
+      {
+        "id": "grey",
+        "label": "Серый",
+        "color": "#939592",
+        "kind": "plaster",
+        "tone": "dark"
+      },
+      {
+        "id": "dark",
+        "label": "Графит",
+        "color": "#515553",
+        "kind": "plaster",
+        "tone": "dark"
+      },
+      {
+        "id": "terracotta",
+        "label": "Терракота",
+        "color": "#A5664C",
+        "kind": "plaster",
+        "tone": "red"
+      },
+      {
+        "id": "bordeaux",
+        "label": "Бордо",
+        "color": "#6E3A36",
+        "kind": "plaster",
+        "tone": "red"
+      },
+      {
+        "id": "olive",
+        "label": "Оливковый",
+        "color": "#7C7B63",
+        "kind": "plaster",
+        "tone": "dark"
+      },
+      {
+        "id": "slate",
+        "label": "Графитово-синий",
+        "color": "#4E5862",
+        "kind": "plaster",
+        "tone": "dark"
+      },
+      {
+        "id": "b-napoli",
+        "label": "ЛСР Неаполь · белый",
+        "color": "#E6E2DA",
+        "kind": "brick",
+        "tone": "light"
+      },
+      {
+        "id": "b-montblanc",
+        "label": "Богандинский Монблан 02/1 · светло-бежевый",
+        "color": "#D8C7A8",
+        "kind": "brick",
+        "tone": "warm"
+      },
+      {
+        "id": "b-praga",
+        "label": "ЛСР Прага · светло-коричневый флэш",
+        "color": "#A9785A",
+        "kind": "brick",
+        "tone": "warm"
+      },
+      {
+        "id": "b-munich",
+        "label": "ЛСР Мюнхен · коричневый",
+        "color": "#6F4535",
+        "kind": "brick",
+        "tone": "warm"
+      },
+      {
+        "id": "b-porto",
+        "label": "ЛСР Порту · тёмно-красный винтаж",
+        "color": "#7B3A2D",
+        "kind": "brick",
+        "tone": "red"
+      },
+      {
+        "id": "b-graphite",
+        "label": "ЛСР · графитовый гладкий",
+        "color": "#4B4B4C",
+        "kind": "brick",
+        "tone": "dark"
+      },
+      {
+        "id": "b-reykjavik",
+        "label": "ЛСР Рейкьявик · чёрный ангоб",
+        "color": "#2F2E2D",
+        "kind": "brick",
+        "tone": "dark"
+      },
+      {
+        "id": "s-limestone",
+        "label": "Известняк · светлый",
+        "color": "#D9D2C3",
+        "kind": "stone",
+        "tone": "light"
+      },
+      {
+        "id": "s-sandstone",
+        "label": "Песчаник · бежевый",
+        "color": "#C2A882",
+        "kind": "stone",
+        "tone": "warm"
+      },
+      {
+        "id": "s-travertine",
+        "label": "Травертин · тёплый",
+        "color": "#B89A78",
+        "kind": "stone",
+        "tone": "warm"
+      },
+      {
+        "id": "s-slate",
+        "label": "Сланец · серый",
+        "color": "#6E6D69",
+        "kind": "stone",
+        "tone": "dark"
+      },
+      {
+        "id": "s-quartzite",
+        "label": "Кварцит · графит",
+        "color": "#45443F",
+        "kind": "stone",
+        "tone": "dark"
+      }
+    ],
+    "apronType": [
+      {
+        "id": "concrete",
+        "label": "Бетон"
+      },
+      {
+        "id": "paver",
+        "label": "Тротуарная плитка"
+      },
+      {
+        "id": "stone",
+        "label": "Натуральный камень"
+      },
+      {
+        "id": "gravel",
+        "label": "Гравий"
+      }
+    ],
+    "apronColor": [
+      {
+        "id": "grey",
+        "label": "Серый",
+        "color": "#9A968E"
+      },
+      {
+        "id": "graphite",
+        "label": "Графит",
+        "color": "#5A5853"
+      },
+      {
+        "id": "sand",
+        "label": "Песочный",
+        "color": "#C4B49A"
+      },
+      {
+        "id": "brown",
+        "label": "Коричневый",
+        "color": "#7D6350"
+      }
+    ],
+    "deck": [
+      {
+        "id": "larch",
+        "label": "Лиственница",
+        "color": "#A87A4E",
+        "kind": "boards"
+      },
+      {
+        "id": "wpc-brown",
+        "label": "ДПК · коричневый",
+        "color": "#6B4A35",
+        "kind": "boards"
+      },
+      {
+        "id": "wpc-grey",
+        "label": "ДПК · серый",
+        "color": "#7A766E",
+        "kind": "boards"
+      },
+      {
+        "id": "thermo",
+        "label": "Термоясень",
+        "color": "#6E4A30",
+        "kind": "boards"
+      },
+      {
+        "id": "wpc-graphite",
+        "label": "ДПК · графит",
+        "color": "#46433F",
+        "kind": "boards"
+      },
+      {
+        "id": "wpc-black",
+        "label": "ДПК · чёрный",
+        "color": "#2B2926",
+        "kind": "boards"
+      },
+      {
+        "id": "tile",
+        "label": "Керамогранит · серый",
+        "color": "#9D978C",
+        "kind": "tile"
+      },
+      {
+        "id": "tile-sand",
+        "label": "Керамогранит · бежевый",
+        "color": "#C6B69C",
+        "kind": "tile"
+      },
+      {
+        "id": "tile-light",
+        "label": "Керамогранит · светлый камень",
+        "color": "#C9C5BC",
+        "kind": "tile"
+      },
+      {
+        "id": "tile-dark",
+        "label": "Керамогранит · антрацит",
+        "color": "#4A4845",
+        "kind": "tile"
+      },
+      {
+        "id": "tile-black",
+        "label": "Керамогранит · чёрный",
+        "color": "#2C2B2A",
+        "kind": "tile"
+      },
+      {
+        "id": "concrete",
+        "label": "Бетон",
+        "color": "#A6A29A",
+        "kind": "plain"
+      }
+    ],
+    "plinth": [
+      {
+        "id": "grey",
+        "label": "Серый",
+        "color": "#8E8A83"
+      },
+      {
+        "id": "graphite",
+        "label": "Графит",
+        "color": "#4D4B48"
+      },
+      {
+        "id": "sand",
+        "label": "Песочный",
+        "color": "#B7AA94"
+      },
+      {
+        "id": "brown",
+        "label": "Коричневый",
+        "color": "#6E5A4A"
+      }
+    ],
+    "lining": [
+      {
+        "id": "wood",
+        "label": "Дерево",
+        "color": "#B08458"
+      },
+      {
+        "id": "white",
+        "label": "Тёплый белый",
+        "color": "#E9E5DC"
+      },
+      {
+        "id": "roof",
+        "label": "В цвет кровли",
+        "color": null
+      },
+      {
+        "id": "graphite",
+        "label": "Графит",
+        "color": "#3B3E41"
+      }
+    ],
+    "accent": [
+      {
+        "id": "light",
+        "label": "Светлый дуб",
+        "color": "#CDB896"
+      },
+      {
+        "id": "natural",
+        "label": "Натуральное дерево",
+        "color": "#AE7E4C"
+      },
+      {
+        "id": "smoked",
+        "label": "Тёмный дуб",
+        "color": "#70523C"
+      },
+      {
+        "id": "match",
+        "label": "В цвет фасада",
+        "color": null
+      },
+      {
+        "id": "charcoal",
+        "label": "Тёмная штукатурка",
+        "color": "#434744"
+      },
+      {
+        "id": "silver",
+        "label": "Серое дерево",
+        "color": "#8B8982"
+      },
+      {
+        "id": "walnut",
+        "label": "Орех",
+        "color": "#5E4330"
+      },
+      {
+        "id": "thermo",
+        "label": "Термососна",
+        "color": "#8A5D3B"
+      },
+      {
+        "id": "pl-larch",
+        "label": "Планкен · лиственница",
+        "color": "#B98A5A",
+        "kind": "boards"
+      },
+      {
+        "id": "pl-graphite",
+        "label": "Планкен · графит",
+        "color": "#3E3D3B",
+        "kind": "boards"
+      },
+      {
+        "id": "br-white",
+        "label": "Кирпич · ЛСР Неаполь белый",
+        "color": "#E6E2DA",
+        "kind": "brick"
+      },
+      {
+        "id": "br-brown",
+        "label": "Кирпич · ЛСР Мюнхен коричневый",
+        "color": "#6F4535",
+        "kind": "brick"
+      },
+      {
+        "id": "br-black",
+        "label": "Кирпич · ЛСР Рейкьявик чёрный",
+        "color": "#2F2E2D",
+        "kind": "brick"
+      },
+      {
+        "id": "st-slate",
+        "label": "Камень · сланец серый",
+        "color": "#6E6D69",
+        "kind": "stone"
+      },
+      {
+        "id": "st-sand",
+        "label": "Камень · песчаник бежевый",
+        "color": "#C2A882",
+        "kind": "stone"
+      },
+      {
+        "id": "pt-white",
+        "label": "Штукатурка · белая",
+        "color": "#F1EEE7"
+      },
+      {
+        "id": "pt-beige",
+        "label": "Штукатурка · бежевая",
+        "color": "#D9CCB6"
+      },
+      {
+        "id": "pt-terracotta",
+        "label": "Штукатурка · терракота",
+        "color": "#A5664C"
+      }
+    ],
+    "roof": [
+      {
+        "id": "graphite",
+        "label": "Графит · RAL 7024",
+        "color": "#474A51",
+        "cov": "metal"
+      },
+      {
+        "id": "anthracite",
+        "label": "Антрацит · RAL 7016",
+        "color": "#383E42",
+        "cov": "metal"
+      },
+      {
+        "id": "brown",
+        "label": "Шоколад · RAL 8017",
+        "color": "#45322E",
+        "cov": "metal"
+      },
+      {
+        "id": "black",
+        "label": "Чёрный · RAL 9005",
+        "color": "#1F1F20",
+        "cov": "metal"
+      },
+      {
+        "id": "greybrown",
+        "label": "Серо-коричневый · RAL 8019",
+        "color": "#403A3A",
+        "cov": "metal"
+      },
+      {
+        "id": "terracotta",
+        "label": "Терракота · RAL 8004",
+        "color": "#8F4E35",
+        "cov": "metal"
+      },
+      {
+        "id": "wine",
+        "label": "Красное вино · RAL 3005",
+        "color": "#5E2129",
+        "cov": "metal"
+      },
+      {
+        "id": "oxred",
+        "label": "Оксидно-красный · RAL 3009",
+        "color": "#642424",
+        "cov": "metal"
+      },
+      {
+        "id": "moss",
+        "label": "Зелёный мох · RAL 6005",
+        "color": "#2F4538",
+        "cov": "metal"
+      },
+      {
+        "id": "grey",
+        "label": "Серый · RAL 7004",
+        "color": "#8E918B",
+        "cov": "metal"
+      },
+      {
+        "id": "sh-platina",
+        "label": "Кантри · платина антрацит",
+        "color": "#3B3C3F",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-grey",
+        "label": "Кантри · серый базальт",
+        "color": "#5E6062",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-brown",
+        "label": "Кантри · коричневый базальт",
+        "color": "#4D3A2F",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-bronze",
+        "label": "Кантри · бронза базальт",
+        "color": "#6A4A30",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-shungit",
+        "label": "Самба · шунгит",
+        "color": "#2A2A2B",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-red",
+        "label": "Финская Соната · красный",
+        "color": "#7B3428",
+        "cov": "shingle"
+      },
+      {
+        "id": "sh-green",
+        "label": "Финская Соната · зелёный",
+        "color": "#3A5140",
+        "cov": "shingle"
+      }
+    ],
+    "frames": [
+      {
+        "id": "anthracite",
+        "label": "Антрацит · RAL 7016",
+        "color": "#34383B"
+      },
+      {
+        "id": "white",
+        "label": "Белый",
+        "color": "#E9E5DC"
+      },
+      {
+        "id": "bronze",
+        "label": "Золотой дуб · Renolit 2178001",
+        "color": "#9C6A3C"
+      },
+      {
+        "id": "walnut",
+        "label": "Орех · Renolit 2052090",
+        "color": "#5C3D29"
+      },
+      {
+        "id": "moredub",
+        "label": "Морёный дуб · Renolit 2052089",
+        "color": "#4A3527"
+      }
+    ]
+  },
+  "styles": [
+    {
+      "id": "warm",
+      "label": "Светлый дуб",
+      "facade": "ivory",
+      "accent": "light",
+      "roof": "graphite",
+      "frames": "anthracite"
+    },
+    {
+      "id": "natural",
+      "label": "Натуральный",
+      "facade": "sand",
+      "accent": "natural",
+      "roof": "brown",
+      "frames": "bronze"
+    },
+    {
+      "id": "darkoak",
+      "label": "Тёмный дуб",
+      "facade": "white",
+      "accent": "smoked",
+      "roof": "anthracite",
+      "frames": "anthracite"
+    },
+    {
+      "id": "grey",
+      "label": "Серый",
+      "facade": "grey",
+      "accent": "silver",
+      "roof": "graphite",
+      "frames": "anthracite"
+    },
+    {
+      "id": "contrast",
+      "label": "Контраст",
+      "facade": "ivory",
+      "accent": "charcoal",
+      "roof": "anthracite",
+      "frames": "anthracite"
+    },
+    {
+      "id": "white",
+      "label": "Белый монолит",
+      "facade": "white",
+      "accent": "match",
+      "roof": "graphite",
+      "frames": "white"
+    },
+    {
+      "id": "scandi",
+      "label": "Скандинавский",
+      "facade": "white",
+      "accent": "pl-larch",
+      "roof": "black",
+      "frames": "anthracite"
+    },
+    {
+      "id": "terra",
+      "label": "Терракота и дерево",
+      "facade": "terracotta",
+      "accent": "natural",
+      "roof": "anthracite",
+      "frames": "anthracite",
+      "lining": "graphite"
+    },
+    {
+      "id": "olive",
+      "label": "Олива и тёмный дуб",
+      "facade": "olive",
+      "accent": "smoked",
+      "roof": "black",
+      "frames": "anthracite",
+      "lining": "wood"
+    },
+    {
+      "id": "bordeaux",
+      "label": "Бордо монолит",
+      "facade": "bordeaux",
+      "accent": "match",
+      "roof": "black",
+      "frames": "anthracite",
+      "lining": "graphite"
+    },
+    {
+      "id": "mocca",
+      "label": "Мокко и орех",
+      "facade": "taupe",
+      "accent": "walnut",
+      "roof": "brown",
+      "frames": "walnut",
+      "lining": "wood"
+    },
+    {
+      "id": "grafit",
+      "label": "Графит и лиственница",
+      "facade": "dark",
+      "accent": "pl-larch",
+      "roof": "black",
+      "frames": "anthracite",
+      "lining": "wood"
+    },
+    {
+      "id": "forest",
+      "label": "Зелёная кровля",
+      "facade": "ivory",
+      "accent": "natural",
+      "roof": "moss",
+      "frames": "walnut",
+      "lining": "wood"
+    },
+    {
+      "id": "redroof",
+      "label": "Красная кровля",
+      "facade": "white",
+      "accent": "smoked",
+      "roof": "oxred",
+      "frames": "anthracite",
+      "lining": "wood"
+    },
+    {
+      "id": "b-classic",
+      "label": "Клинкер классика",
+      "facade": "b-praga",
+      "accent": "pt-beige",
+      "roof": "brown",
+      "frames": "walnut",
+      "lining": "wood"
+    },
+    {
+      "id": "b-white",
+      "label": "Белый кирпич",
+      "facade": "b-napoli",
+      "accent": "natural",
+      "roof": "anthracite",
+      "frames": "anthracite",
+      "lining": "wood"
+    },
+    {
+      "id": "b-modern",
+      "label": "Графитовый кирпич и термососна",
+      "facade": "b-graphite",
+      "accent": "thermo",
+      "roof": "black",
+      "frames": "anthracite",
+      "lining": "roof"
+    },
+    {
+      "id": "b-black",
+      "label": "Чёрный клинкер",
+      "facade": "b-reykjavik",
+      "accent": "match",
+      "roof": "black",
+      "frames": "anthracite",
+      "lining": "graphite"
+    },
+    {
+      "id": "b-red",
+      "label": "Красный кирпич и дуб",
+      "facade": "b-porto",
+      "accent": "smoked",
+      "roof": "greybrown",
+      "frames": "moredub",
+      "lining": "wood"
+    },
+    {
+      "id": "s-light",
+      "label": "Известняк и дуб",
+      "facade": "s-limestone",
+      "accent": "smoked",
+      "roof": "graphite",
+      "frames": "moredub",
+      "lining": "wood"
+    },
+    {
+      "id": "s-slate",
+      "label": "Сланец",
+      "facade": "s-slate",
+      "accent": "natural",
+      "roof": "anthracite",
+      "frames": "anthracite",
+      "lining": "wood"
+    }
+  ],
+  "terraces": [
+    {
+      "id": "covered",
+      "label": "Застеклённая по проекту"
+    },
+    {
+      "id": "open",
+      "label": "Открытая"
+    },
+    {
+      "id": "none",
+      "label": "Без террасы"
+    }
+  ],
+  "roofTypes": [
+    {
+      "id": "standing-seam",
+      "label": "Фальц · Grand Line"
+    },
+    {
+      "id": "metal-tile",
+      "label": "Металлочерепица · Grand Line"
+    },
+    {
+      "id": "shingle",
+      "label": "Гибкая черепица · ТЕХНОНИКОЛЬ Shinglas"
+    }
+  ],
+  "packs": [
+    {
+      "id": "shell",
+      "label": "Тёплый контур"
+    },
+    {
+      "id": "prefinish",
+      "label": "Предчистовая отделка"
+    },
+    {
+      "id": "turnkey",
+      "label": "Под ключ"
+    }
+  ],
+  "walls": [
+    {
+      "id": "ceramic-block",
+      "label": "Керамоблок"
+    },
+    {
+      "id": "aerated-concrete",
+      "label": "Газобетон"
+    }
+  ],
+  "source": "https://humhouse.ru/configurator",
+  "model": "Гранат"
+}
