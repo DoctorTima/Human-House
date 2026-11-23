@@ -178,6 +178,37 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
 .vt td{padding:4px}
 .vt input{width:100%;min-height:44px;border:1px solid var(--line2);border-radius:8px;padding:0 8px;font-family:var(--mono);font-size:16px}
 
+/* дом по точкам */
+.seg.fit button{flex:1 1 auto;font-size:14px;padding:0 8px;white-space:nowrap}
+.pwprev{width:100%;height:auto;display:block;background:#FAF9F4;border:1px solid var(--line);border-radius:12px;touch-action:manipulation}
+.pwstat{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;font-size:14.5px;font-weight:600;line-height:1.35}
+.pwstat.ok{background:var(--ok-bg);color:var(--ok)}.pwstat.warn{background:var(--warn-bg);color:var(--warn)}.pwstat.err{background:var(--err-bg);color:var(--err)}.pwstat.idle{background:var(--soft);color:var(--ink2)}
+.pwstat .btn{min-height:40px;font-size:14.5px;padding:0 12px}
+.pwadd{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}
+.pad{display:grid;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(3,46px);gap:4px}
+.pad button{border:1px solid var(--line2);background:#fff;border-radius:11px;font-size:21px;font-weight:700;color:var(--ink);padding:0;touch-action:manipulation}
+.pad button:active{background:var(--acc);border-color:var(--acc);color:#fff}
+.pad button.c{font-size:13px;font-weight:700;color:var(--mute);background:var(--soft)}
+.pwlist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.pwrow{display:grid;grid-template-columns:26px minmax(0,1fr) 98px 62px 40px;gap:6px;align-items:center;padding:6px 8px;border-bottom:1px solid var(--line);background:#fff}
+.pwrow:last-child{border-bottom:0}
+.pwrow.sel{background:var(--acc-bg)}
+.pwrow b{font-family:var(--mono);font-size:14px;color:var(--acc);text-align:center}
+.pwrow span{font-size:14px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pwrow input{width:100%;min-height:44px;border:1px solid var(--line2);border-radius:9px;padding:0 8px;font-family:var(--mono);font-size:17px;text-align:right;background:#fff}
+.pwrow select{width:100%;min-height:44px;border:1px solid var(--line2);border-radius:9px;font-size:20px;background:#fff;color:var(--ink);text-align:center;text-align-last:center;padding:0 2px}
+.pwrow .ib{width:40px;height:40px}
+.pwrow.w2{grid-template-columns:26px minmax(0,1fr) 110px 22px}.pwrow em{font-style:normal;color:var(--mute);font-weight:600}
+
+/* подтверждение (вместо системного confirm — в холсте и встраиваниях он бывает заблокирован) */
+.dlg{position:fixed;inset:0;z-index:120;background:rgba(16,14,12,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+.dlg .box{width:min(440px,100%);background:var(--card);border-radius:18px;box-shadow:0 24px 60px rgba(16,14,12,.35);padding:20px;display:flex;flex-direction:column;gap:12px}
+.dlg h3{margin:0;font-size:19px;font-weight:800;line-height:1.25}
+.dlg p{margin:0;color:var(--mute);font-size:15px;line-height:1.45}
+.dlg .btns{display:flex;flex-direction:column;gap:8px;margin-top:4px}.dlg .btn{width:100%}
+.dlg .btn.danger{background:var(--err);border-color:var(--err);color:#fff}
+@media (max-width:699px){.dlg{align-items:flex-end;padding:0}.dlg .box{border-radius:20px 20px 0 0;padding-bottom:max(20px,env(safe-area-inset-bottom))}}
+
 /* узкие экраны: схема сверху, панель снизу */
 @media (max-width:999px){
   .pop{position:fixed;left:0;right:0;bottom:0;transform:none;width:auto;border-radius:18px 18px 0 0;padding-bottom:max(16px,env(safe-area-inset-bottom));max-height:70vh;overflow-y:auto;z-index:40}
@@ -234,6 +265,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   .pop{z-index:45}
 }
 @media (max-width:699px) and (prefers-reduced-motion:reduce){.side{will-change:auto}}
+@media (max-width:699px){.pbar{gap:6px;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top))}.pbar p{display:none}.pbar .tbtn{min-height:42px;padding:0 12px;font-size:15px}.pbar .tbtn .lbl{display:none}}
 @media (max-width:699px),(max-height:560px) and (orientation:landscape){.toast{font-size:14px;padding:8px 14px;line-height:1.3;max-width:min(420px,calc(100% - 32px))}}
 @media (max-width:360px){.brand img{display:none}.brand b{font-size:15px}.tools{gap:4px}.tbtn{min-width:40px;padding:0 8px}.step i{width:30px;height:30px}}
 
@@ -243,7 +275,10 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
 .pbar p{margin:0;flex:1 1 260px;font-size:14px;color:var(--top-mute)}
 /* лист A4 — акт в фирменном стиле Human House: поля как в бумажном бланке, Golos Text, тонкие линейки */
 .sheet{--ink:#1D1C18;--mut:#6B675C;--hair:#E4E0D6;--tan:#8E7559;--soft:#F7F4EE;width:210mm;box-sizing:border-box;margin:16px auto;background:#fff;color:var(--ink);padding:13mm 15mm 8mm;box-shadow:0 6px 24px rgba(0,0,0,.18);font:9.5pt/1.42 'Golos Text',-apple-system,system-ui,'Segoe UI',Roboto,Arial,sans-serif;font-variant-numeric:tabular-nums;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.sheet.act{height:297mm;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.sheet.act{min-height:297mm;display:flex;flex-direction:column;position:relative}
+/* лист на экране: масштаб через transform внутри обёртки с точным размером — одинаково в Safari, Chrome, Firefox */
+.sheetwrap{position:relative;margin:16px auto}
+.sheetwrap>.sheet{position:absolute;left:0;top:0;margin:0;transform-origin:0 0}
 .sheet p{margin:0}
 .dh{display:flex;align-items:center;gap:4.5mm;padding-bottom:3mm;border-bottom:1.5px solid var(--ink)}
 .dh img{width:15mm;height:auto;flex:none;display:block}
@@ -270,7 +305,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
 .pill{display:inline-block;border:1px solid currentColor;border-radius:9mm;padding:0 2.1mm;font-size:7.4pt;line-height:1.55;font-weight:700;letter-spacing:.04em;margin-right:1.6mm;vertical-align:1px}
 .pill.yes{color:#2E6B47}.pill.planned{color:#9A5B12}.pill.no{color:#6B675C}
 .note{margin-top:2.2mm;padding:1.5mm 3mm;background:var(--soft);border-left:2px solid var(--tan);border-radius:0 1.5mm 1.5mm 0;font-size:8.5pt;color:#3F3C35}
-.ascheme{flex:1 1 auto;min-height:60mm;position:relative;border:1px solid var(--hair);border-radius:2.5mm;overflow:hidden}
+.ascheme{flex:1 1 auto;min-height:50mm;position:relative;border:1px solid var(--hair);border-radius:2.5mm;overflow:hidden}
 .ascheme>svg{position:absolute;left:2mm;top:2mm;width:calc(100% - 4mm);height:calc(100% - 4mm)}
 .cap{display:flex;justify-content:space-between;gap:4mm;margin-top:1.3mm;font-size:7.4pt;color:var(--mut)}
 .notes{margin-top:2.2mm;font-size:9pt}
@@ -300,9 +335,11 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   html,body{height:auto;overflow:visible;background:#fff}
   #app,.pbar{display:none!important}
   #print{position:static;background:#fff;overflow:visible}
-  .sheet{zoom:1!important;margin:0;box-shadow:none;width:210mm;min-height:296mm;page-break-after:always}
-  .sheet.act{height:296mm}
-  .sheet:last-child{page-break-after:auto}
+  .sheetwrap{width:auto!important;height:auto!important;margin:0;position:static}
+  .sheetwrap>.sheet{position:static;transform:none!important}
+  .sheet{margin:0;box-shadow:none;width:210mm;min-height:296mm;page-break-after:always}
+  .sheet.act{min-height:296mm}
+  .sheetwrap:last-child .sheet{page-break-after:auto}
 }
 </style>
 <script src="./site-plan-core-v3.js"></script>
@@ -353,6 +390,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   </main>
 </div>
 <div id="print" hidden></div>
+<div id="dlg" class="dlg" hidden role="dialog" aria-modal="true"></div>
 <input type="file" id="file" accept=".json,application/json" hidden>
 
 <script>
@@ -401,7 +439,9 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     if (keepPanel) { paint(); renderSteps(); renderTop(); } else render();
   }
   function setDoc(d, msg) {
-    doc = d; st.sel = null; st.pickV = st.pickS = st.place = null; st.pop = null; st.V = null; st.hist = []; st.fut = [];
+    var prev = doc ? snapshot() : null; /* прежний проект можно вернуть кнопкой «Отменить» */
+    st.draw = null;
+    doc = d; st.sel = null; st.pickV = st.pickS = st.place = null; st.pop = null; st.V = null; st.hist = prev ? [prev] : []; st.fut = [];
     persist(); fit(); render(); if (msg) toast(msg);
   }
   function undo() { if (!st.hist.length) return; st.fut.push(snapshot()); doc = JSON.parse(st.hist.pop()); afterHist('Отменено'); }
@@ -458,7 +498,8 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   function uiFor() {
     var s = st.step, ui = { step: s, tool: 'select', sel: st.sel, pickV: st.pickV, pickS: st.pickS };
     if (s === 'anchors') ui.tool = 'anchorS';
-    if (s === 'house' && doc.building && !st.sel) ui.sel = { k: 'house' };
+    if (s === 'house' && st.pop && st.pop.type === 'wall') ui.sel = { k: 'wall', i: st.pop.i };
+    if (s === 'house' && doc.building && !st.sel && !st.pop) ui.sel = { k: 'house' };
     if (s === 'slope' && st.pop && st.pop.type === 'elev') ui.sel = { k: 'corner', id: st.pop.vid };
     if (s === 'anchors' && st.pop && st.pop.type === 'anchor') ui.sel = { k: 'an', id: st.pop.id };
     return ui;
@@ -467,7 +508,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   function paint() {
     if (!doc) return;
     var z = size(); if (!st.V) fit(); st.V.W = z.W; st.V.H = z.H;
-    cv.innerHTML = C.drawScene(doc, st.V, uiFor());
+    cv.innerHTML = C.drawScene(doc, st.V, uiFor()) + (drawOn() ? dwSvg() : '');
     renderBadges(); renderHint();
   }
   function paintSoon() { if (raf) return; raf = requestAnimationFrame(function () { raf = 0; paint(); }); }
@@ -488,7 +529,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     var s = st.step;
     if (st.pop) return '';
     if (s === 'parcel') return closed() ? 'Перетащите угол участка, чтобы поправить форму. Коснитесь стороны — подпишите её.' : 'Задайте размеры участка в панели.';
-    if (s === 'house') return doc.building ? 'Перетащите дом пальцем. Круглая ручка — поворот.' : (closed() ? 'Задайте размеры дома и нажмите «Поставить дом».' : 'Сначала задайте участок.');
+    if (s === 'house') return doc.building ? (pwHouse() ? 'Тяните номер стены — она сдвинется. Нажмите на номер — точная длина.' : 'Перетащите дом пальцем. Круглая ручка — поворот.') : (!closed() ? 'Сначала задайте участок.' : st.hShape === 'pts' ? (!(st.draw && st.draw.pts.length) ? 'Коснитесь схемы — <em>первый угол дома</em>' : st.draw.pts.length < 3 ? 'Ставьте углы — <em>стены встают под прямым углом</em>' : 'Ещё углы или коснитесь <em>угла A</em> — дом замкнётся') : 'Задайте размеры дома и нажмите «Поставить дом».');
     if (s === 'anchors') {
       if (!doc.building || !closed()) return 'Нужны участок и дом.';
       if (st.pickV) return 'Угол <em>' + letter(st.pickV) + '</em> выбран — коснитесь <em>границы участка</em>';
@@ -512,7 +553,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     var m = doc.meta, t = st.savedAt ? ('сохранено ' + String(st.savedAt.getHours()).padStart(2, '0') + ':' + String(st.savedAt.getMinutes()).padStart(2, '0')) : 'не сохранено';
     if (st.saveErr) t = 'не удалось сохранить на устройстве — сохраните файл';
     $('sub').textContent = (m.address || (doc.demo ? 'Пример' : 'Новый объект')) + ' · ' + t;
-    $('bUndo').disabled = !st.hist.length; $('bRedo').disabled = !st.fut.length;
+    $('bUndo').disabled = !st.hist.length && !(drawOn() && st.draw && st.draw.pts.length); $('bRedo').disabled = !st.fut.length;
   }
   function renderSteps() {
     var S = status();
@@ -586,7 +627,8 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     var h = head(1), b = B();
     if (!closed()) return h + '<div class="card warn"><p class="lead">Сначала задайте участок.</p><button class="btn pri" data-act="step:parcel">К участку</button></div>';
     if (!b) {
-      h += '<div class="card"><h3>Форма дома</h3>' + seg('hshape', [['rect', 'Прямоугольный'], ['L', 'Г-образный']], st.hShape) +
+      h += '<div class="card"><h3>Форма дома</h3>' + seg('hshape', [['rect', 'Прямоугольный'], ['L', 'Г‑образный'], ['pts', 'По точкам']], st.hShape).replace('class="seg"', 'class="seg fit"') +
+        (st.hShape === 'pts' ? '</div>' + dwPanel() + '<div hidden>' : '') +
         '<div class="grid2"><label class="f">Ширина (фасад), м<input id="hW" inputmode="decimal" class="num" value="' + esc(st.hW) + '"></label><label class="f">Глубина, м<input id="hL" inputmode="decimal" class="num" value="' + esc(st.hL) + '"></label></div>' +
         (st.hShape === 'L' ? '<div class="grid2"><label class="f">Вырез по ширине, м<input id="hA" inputmode="decimal" class="num" value="' + esc(st.hA) + '"></label><label class="f">Вырез по глубине, м<input id="hC" inputmode="decimal" class="num" value="' + esc(st.hC) + '"></label></div>' : '') +
         '<button class="btn pri wide" data-act="placeHouse">Поставить дом на участок</button><p class="muted">Дом встанет в центр, параллельно дороге. Потом его можно перетащить.</p></div>';
@@ -594,9 +636,11 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     }
     var ss = segList(), dims = C.houseDims(b);
     h += '<div class="card soft"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-end"><div><span class="muted">Контур</span><div class="big" style="font-size:30px">' + fmt(dims.w) + ' × ' + fmt(dims.l) + '</div><span class="muted">метров · поворот ' + fmt(b.angle, 1) + '°</span></div></div></div>';
-    h += '<div class="grid2">' + field('Ширина, м', 'b.w', fmt(b.w), { type: 'num', commit: 1 }) + field('Глубина, м', 'b.l', fmt(b.l), { type: 'num', commit: 1 }) + '</div>';
+    if (b.shape === 'poly') h += wallsPanel();
+    else h += '<div class="grid2">' + field('Ширина, м', 'b.w', fmt(b.w), { type: 'num', commit: 1 }) + field('Глубина, м', 'b.l', fmt(b.l), { type: 'num', commit: 1 }) + '</div>';
     if (b.shape === 'L') h += '<div class="grid2">' + field('Вырез по ширине, м', 'b.cutW', fmt(b.cutW), { type: 'num', commit: 1 }) + field('Вырез по глубине, м', 'b.cutL', fmt(b.cutL), { type: 'num', commit: 1 }) + '</div>' +
       '<div><p class="muted" style="margin-bottom:6px">Где вырез</p>' + seg('hcorner', [['tl', '↖'], ['tr', '↗'], ['bl', '↙'], ['br', '↘']], b.corner) + '</div>';
+    if (b.shape !== 'poly') h += '<button class="btn sm" data-act="toPoly">Сложная форма — двигать стены</button>';
     h += '<div><p class="lead" style="margin-bottom:8px">Поворот</p><div class="btns"><button class="btn sm" data-act="rot:-90">⟲ 90°</button><button class="btn sm" data-act="rot:90">⟳ 90°</button></div>' +
       '<p class="muted" style="margin:10px 0 6px">Параллельно стороне участка:</p><div class="chips">' + ss.map(function (s) { var on = Math.abs(normA(b.angle - segAngle(s))) < 0.05 || Math.abs(Math.abs(normA(b.angle - segAngle(s))) - 180) < 0.05; return '<button class="chip" data-act="alignSide:' + s.key + '" aria-pressed="' + on + '">' + s.n + (s.label ? ' · ' + esc(s.label) : '') + '</button>'; }).join('') + '</div></div>';
     h += field('Проект / название дома', 'b.name', b.name || '', {});
@@ -604,6 +648,242 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
       '<label class="f">Контур для привязки<select data-f="b.ref" data-commit="1">' + [['walls', 'Наружные стены'], ['foundation', 'Фундамент'], ['other', 'Другое']].map(function (o) { return '<option value="' + o[0] + '"' + (b.ref === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' +
       '<button class="btn sm danger" data-act="delHouse">Удалить дом</button>');
     return h + navBtns(1);
+  }
+
+
+  /* ---------- дом по точкам ----------
+     Контур — обход по стенам от угла A: у каждой стены длина и направление на плане
+     (→ вдоль фасада, ↓ к дороге). В модели это стены «длина + поворот» (shape: 'poly'). */
+  var DIRS = [[135, '↖'], [90, '↑'], [45, '↗'], [180, '←'], [-1, ''], [0, '→'], [225, '↙'], [270, '↓'], [315, '↘']];
+  var DIR8 = [[0, '→'], [45, '↗'], [90, '↑'], [135, '↖'], [180, '←'], [225, '↙'], [270, '↓'], [315, '↘']];
+  function dN(d) { d = d % 360; if (d < 0) d += 360; d = Math.round(d * 10) / 10; return d >= 360 ? 0 : d; }
+  function aN(d) { while (d > 180) d -= 360; while (d <= -180) d += 360; return d; }
+  function dArrow(d) { var e = DIR8.filter(function (x) { return Math.abs(aN(x[0] - d)) < 0.5; })[0]; return e ? e[1] : fmt(dN(d), 1) + '°'; }
+  function pwPts(list) { var q = { x: 0, y: 0 }, out = [q]; list.forEach(function (w) { var r = w.d * Math.PI / 180; q = { x: q.x + Math.cos(r) * w.l, y: q.y + Math.sin(r) * w.l }; out.push(q); }); return out; }
+  function pwGap(list) { var P = pwPts(list), e = P[P.length - 1]; return { x: -e.x, y: -e.y, len: Math.hypot(e.x, e.y) }; }
+  function pwNorm(list) { /* без нулевых стен; стены по одной прямой — одна стена (и через угол A, если контур замкнут) */
+    var a = list.filter(function (w) { return w.l > 0.004; }).map(function (w) { return { l: Math.round(w.l * 1000) / 1000, d: dN(w.d) }; }), ch = true;
+    while (ch && a.length > 1) {
+      ch = false;
+      for (var i = 0; i < a.length; i++) {
+        var j = (i + 1) % a.length; if (j === 0 && (a.length < 3 || pwGap(a).len > 0.01)) break;
+        var df = aN(a[j].d - a[i].d), m = null;
+        if (Math.abs(df) < 0.5) m = { l: a[i].l + a[j].l, d: a[i].d };
+        else if (Math.abs(df) > 179.5) { var r = a[i].l - a[j].l; m = r >= 0 ? { l: r, d: a[i].d } : { l: -r, d: a[j].d }; }
+        if (m) { if (j === 0) { a[0] = m; a.pop(); } else { a[i] = m; a.splice(j, 1); } a = a.filter(function (w) { return w.l > 0.004; }); ch = true; break; }
+      }
+    }
+    return a;
+  }
+  function pwClose(list) { /* замкнуть: по прямой к A, если можно; иначе двумя стенами под прямым углом */
+    var g = pwGap(list); if (g.len < 0.01 || !list.length) return list;
+    var hx = Math.abs(g.x) > 0.004 ? { l: Math.abs(g.x), d: g.x > 0 ? 0 : 180 } : null, vy = Math.abs(g.y) > 0.004 ? { l: Math.abs(g.y), d: g.y > 0 ? 90 : 270 } : null;
+    var lastH = Math.abs(Math.sin(list[list.length - 1].d * Math.PI / 180)) < 0.01, ortho = list.every(function (w) { return Math.abs(w.d % 90) < 0.5 || Math.abs(w.d % 90) > 89.5; });
+    var add = !ortho && hx && vy ? [{ l: g.len, d: dN(Math.atan2(g.y, g.x) * 180 / Math.PI) }] : (lastH ? [vy, hx] : [hx, vy]);
+    return pwNorm(list.concat(add.filter(Boolean)));
+  }
+  function pwSimple(list) {
+    var P = pwPts(list).slice(0, -1), n = P.length; if (n < 3) return false;
+    function cr(a, b, c) { return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x); }
+    function X(a, b, c, d) { var d1 = cr(c, d, a), d2 = cr(c, d, b), d3 = cr(a, b, c), d4 = cr(a, b, d); return ((d1 > 1e-9 && d2 < -1e-9) || (d1 < -1e-9 && d2 > 1e-9)) && ((d3 > 1e-9 && d4 < -1e-9) || (d3 < -1e-9 && d4 > 1e-9)); }
+    for (var i = 0; i < n; i++) for (var j = i + 2; j < n; j++) { if (i === 0 && j === n - 1) continue; if (X(P[i], P[(i + 1) % n], P[j], P[(j + 1) % n])) return false; }
+    return Math.abs(C.polyArea(P)) >= 1;
+  }
+  function pwState(list) {
+    var g = pwGap(list), P = pwPts(list), x0 = 0, y0 = 0, x1 = 0, y1 = 0;
+    P.forEach(function (q) { x0 = Math.min(x0, q.x); y0 = Math.min(y0, q.y); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y); });
+    var closed = list.length >= 3 && g.len < 0.01, simple = closed && pwSimple(list);
+    return { g: g, closed: closed, ok: simple, w: x1 - x0, l: y1 - y0, area: closed ? Math.abs(C.polyArea(P.slice(0, -1))) : 0 };
+  }
+  function pwToB(list) { var n = list.length; return { h0: list[0].d, walls: list.map(function (w, i) { return { len: Math.round(w.l * 1000) / 1000, turn: Math.round(-aN(list[(i + 1) % n].d - w.d) * 10) / 10 }; }) }; }
+  function bToPw(b) { var d = b.h0 || 0, out = []; (b.walls || []).forEach(function (w) { out.push({ l: w.len, d: dN(d) }); d -= w.turn; }); return out; }
+  function ptsToPw(P) { return P.map(function (q, i) { var r = P[(i + 1) % P.length]; return { l: Math.hypot(r.x - q.x, r.y - q.y), d: dN(Math.atan2(r.y - q.y, r.x - q.x) * 180 / Math.PI) }; }); }
+  function pwHouse() { var b = B(); return !!(b && b.shape === 'poly'); }
+  function pwGet() { return pwHouse() ? bToPw(B()) : (st.pw || []).map(function (w) { return { l: w.l, d: w.d }; }); }
+  function pwSet(list, msg) {
+    list = pwNorm(list);
+    if (pwHouse()) {
+      if (list.length < 2) { toast('У дома должно быть хотя бы две стены', true); render(); return; }
+      commit(function () { var b = B(), r = pwToB(list); b.h0 = r.h0; b.walls = r.walls; var dm = C.houseDims(b); b.w = Math.max(1, Math.round(dm.w * 100) / 100); b.l = Math.max(1, Math.round(dm.l * 100) / 100); });
+    } else { st.pw = list; render(); }
+    if (msg) toast(msg);
+  }
+  function pwSvg(list, selI) {
+    var P = pwPts(list), S0 = pwState(list), pts = S0.closed ? P.slice(0, -1) : P, W = 360, H = 210, pad = 30;
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; P.forEach(function (q) { x0 = Math.min(x0, q.x); y0 = Math.min(y0, q.y); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y); });
+    var bw = Math.max(x1 - x0, 4), bh = Math.max(y1 - y0, 4), k = Math.min((W - 2 * pad) / bw, (H - 2 * pad - 14) / bh), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    var Sx = function (q) { return [(q.x - cx) * k + W / 2, (H - 14) / 2 - (q.y - cy) * k]; }, s = '', pl = pts.map(function (q) { var a = Sx(q); return a[0].toFixed(1) + ',' + a[1].toFixed(1); }).join(' ');
+    s += '<line x1="40" y1="' + (H - 6) + '" x2="' + (W - 40) + '" y2="' + (H - 6) + '" stroke="#C9C1B3" stroke-width="3" stroke-dasharray="10 6"/><text x="' + (W / 2) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8E877B">к дороге ↓</text>';
+    if (list.length) s += S0.closed ? '<polygon points="' + pl + '" fill="' + (S0.ok ? '#EFE9DE' : '#FBE9E7') + '" stroke="#1B1815" stroke-width="2.6" stroke-linejoin="miter"/>' : '<polyline points="' + pl + '" fill="none" stroke="#1B1815" stroke-width="2.6" stroke-linejoin="miter"/>';
+    if (list.length && !S0.closed) { var e = Sx(P[P.length - 1]), a0 = Sx(P[0]); s += '<line x1="' + e[0] + '" y1="' + e[1] + '" x2="' + a0[0] + '" y2="' + a0[1] + '" stroke="#BF512D" stroke-width="1.6" stroke-dasharray="5 4"/>'; }
+    var spo = pts.map(function (q) { var a = Sx(q); return { x: a[0], y: a[1] }; }), cxs = 0, cys = 0;
+    spo.forEach(function (q) { cxs += q.x; cys += q.y; }); cxs /= spo.length || 1; cys /= spo.length || 1;
+    list.forEach(function (w, i) { /* подпись длины — снаружи контура */
+      var a = Sx(P[i]), b = Sx(P[i + 1]), mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, nx = dy / L, ny = -dx / L;
+      var off = L < 30 ? 22 : 12, flip = S0.closed ? C.inPoly({ x: mx + nx * 6, y: my + ny * 6 }, spo) : Math.hypot(mx + nx - cxs, my + ny - cys) < Math.hypot(mx - nx - cxs, my - ny - cys);
+      if (flip) { nx = -nx; ny = -ny; }
+      if (i === selI) s += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="#BF512D" stroke-width="5" stroke-linecap="round"/>';
+      if (L < 22 && i !== selI) return; /* короткую стену подписывает список, не превью */
+      s += '<text x="' + (mx + nx * off).toFixed(1) + '" y="' + (my + ny * off + 4).toFixed(1) + '" text-anchor="middle" font-size="11" font-weight="700" fill="' + (i === selI ? '#BF512D' : '#46413A') + '" stroke="#FAF9F4" stroke-width="3" paint-order="stroke">' + fmt(w.l) + '</text>';
+    });
+    pts.forEach(function (q, i) {
+      var a = Sx(q), dx = a[0] - cxs, dy = a[1] - cys, dl = Math.hypot(dx, dy) || 1;
+      s += '<circle cx="' + a[0].toFixed(1) + '" cy="' + a[1].toFixed(1) + '" r="3.2" fill="#1B1815"/><text x="' + (a[0] + dx / dl * 13).toFixed(1) + '" y="' + (a[1] + dy / dl * 13 + 4).toFixed(1) + '" text-anchor="middle" font-size="12" font-weight="800" fill="#BF512D" stroke="#FAF9F4" stroke-width="3" paint-order="stroke">' + C.lt(i) + '</text>';
+    });
+    if (!S0.closed) { var z = Sx(P[P.length - 1]); s += '<circle cx="' + z[0] + '" cy="' + z[1] + '" r="8" fill="none" stroke="#BF512D" stroke-width="2.4"/>'; }
+    if (!list.length) s += '<text x="' + (W / 2) + '" y="' + (H / 2 - 4) + '" text-anchor="middle" font-size="13" font-weight="700" fill="#8E877B">угол A — начало обхода</text><circle cx="' + (W / 2) + '" cy="' + (H / 2 + 14) + '" r="8" fill="none" stroke="#BF512D" stroke-width="2.4"/>';
+    return '<svg class="pwprev" id="pwPrev" viewBox="0 0 ' + W + ' ' + H + '" font-family="Golos Text, Arial, sans-serif" role="img" aria-label="Контур дома">' + s + '</svg>';
+  }
+  /* ---------- рисование дома касаниями ----------
+     Касание схемы — угол дома. Стены встают под прямым углом к дороге (или к первой стороне участка):
+     каждая следующая — поперёк предыдущей. Длина — с шагом 10 см, угол «прилипает» к уровню уже
+     поставленных углов. Касание угла A (или «Замкнуть») — контур замыкается, дом готов. */
+  function dwTh() { var ss = segList(), road = ss.filter(function (s) { return /дорог|улиц|проезд/i.test(s.label || ''); })[0] || ss[0], a = road ? Math.round(normA(segAngle(road)) * 10) / 10 : 0; return Math.abs(a) === 180 ? 0 : a; }
+  function dw() { if (!st.draw) st.draw = { pts: [], prev: null, th: dwTh() }; return st.draw; }
+  function drawOn() { return st.step === 'house' && !B() && st.hShape === 'pts' && closed(); }
+  function toL(q, o, th) { var a = -th * Math.PI / 180, dx = q.x - o.x, dy = q.y - o.y; return { x: dx * Math.cos(a) - dy * Math.sin(a), y: dx * Math.sin(a) + dy * Math.cos(a) }; }
+  function toW(q, o, th) { var a = th * Math.PI / 180; return { x: o.x + q.x * Math.cos(a) - q.y * Math.sin(a), y: o.y + q.x * Math.sin(a) + q.y * Math.cos(a) }; }
+  function r1(v) { return Math.round(v * 10) / 10; }
+  function dwSnap(w) {
+    var D = dw(), P = D.pts, th = D.th, k = st.V.k;
+    if (!P.length) return { p: { x: Math.round(w.x * 20) / 20, y: Math.round(w.y * 20) / 20 }, len: 0 };
+    var A = P[0], L = P.map(function (q) { return toL(q, A, th); }), last = L[L.length - 1], q = toL(w, A, th), axis;
+    if (P.length >= 3 && Math.hypot(w.x - A.x, w.y - A.y) * k < 28) return { p: A, close: true, len: 0 };
+    if (L.length >= 2) { var pl = L[L.length - 2]; axis = Math.abs(last.x - pl.x) > Math.abs(last.y - pl.y) ? 'y' : 'x'; }
+    else axis = Math.abs(q.x - last.x) >= Math.abs(q.y - last.y) ? 'x' : 'y';
+    var v = r1(q[axis]), guide = null, tol = 12 / k;
+    /* «прилипание» к уровню других углов — но не так, чтобы стена схлопнулась */
+    L.forEach(function (c, i) { if (i < L.length - 1 && Math.abs(q[axis] - c[axis]) < tol && Math.abs(c[axis] - last[axis]) >= 0.2 && (guide === null || Math.abs(q[axis] - c[axis]) < Math.abs(q[axis] - L[guide][axis]))) { v = c[axis]; guide = i; } });
+    var n = { x: last.x, y: last.y }; n[axis] = v;
+    return { p: toW(n, A, th), len: Math.abs(n[axis] - last[axis]), guide: guide === null ? null : P[guide] };
+  }
+  function dwAdd(w) {
+    var D = dw(), s = dwSnap(w); D.prev = null;
+    if (s.close) return dwClose();
+    if (D.pts.length && s.len < 0.05) { paint(); return; }
+    D.pts.push(s.p); render();
+  }
+  function dwUndo() { var D = dw(); D.pts.pop(); D.prev = null; render(); }
+  function dwClosePts() { /* углы в системе дома (A = 0,0); замыкание под прямым углом, лишние точки на прямой убраны */
+    var D = dw(), A = D.pts[0], L = D.pts.map(function (q) { var l = toL(q, A, D.th); return { x: r1(l.x), y: r1(l.y) }; }), n = L.length, last = L[n - 1];
+    if (Math.abs(last.x) > 0.01 && Math.abs(last.y) > 0.01) {
+      var pl = L[n - 2], horiz = Math.abs(last.x - pl.x) > Math.abs(last.y - pl.y);
+      L.push(horiz ? { x: last.x, y: 0 } : { x: 0, y: last.y });
+    }
+    var ch = true;
+    while (ch && L.length > 3) {
+      ch = false;
+      for (var i = 0; i < L.length; i++) {
+        var a = L[(i + L.length - 1) % L.length], b = L[i], c = L[(i + 1) % L.length];
+        if (Math.abs((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)) < 1e-6 || Math.hypot(b.x - a.x, b.y - a.y) < 0.01) { L.splice(i, 1); ch = true; break; }
+      }
+    }
+    return L;
+  }
+  function dwClose() {
+    var D = dw(); if (D.pts.length < 3) { toast('Поставьте хотя бы три угла', true); return; }
+    var Q = dwClosePts(), list = ptsToPw(Q);
+    if (Q.length < 4 || !pwSimple(list)) { toast('Стены пересекаются — уберите последний угол и поставьте иначе', true); return; }
+    var A = D.pts[0], th = D.th;
+    commit(function () {
+      var b = C.newBuilding('poly', A.x, A.y); b.angle = th; b.x = A.x; b.y = A.y; b.walls = []; b.h0 = 0;
+      setHouseLocal(b, Q);
+      b.name = 'Дом ' + fmt(b.w, 1) + ' × ' + fmt(b.l, 1) + ' м'; b.elev = {}; doc.building = b; doc.anchors = [];
+    });
+    st.draw = null; toast('Дом готов: ' + fmt(B().w) + ' × ' + fmt(B().l) + ' м');
+    if (isM()) shTo('half');
+    focusHouse(); paint();
+  }
+  /* телефон: крупнее показать дом над листом, чтобы номера стен было удобно тянуть */
+  function focusHouse() {
+    var b = B(); if (!b) return; var hv = C.houseWorld(b), x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    hv.forEach(function (q) { x0 = Math.min(x0, q.x); y0 = Math.min(y0, q.y); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y); });
+    var z = size(), cover = isM() && SH.full ? Math.min(SH.full - SH.D[SH.det], SH.full - SH.D.half) : 0, Hv = Math.max(160, z.H - cover);
+    if (st.V && Math.max(x1 - x0, y1 - y0) * st.V.k >= 160) return; /* дом и так крупный (планшет, компьютер) */
+    var top = 64; /* сверху — плашка уклона и «Всё» */
+    var k = Math.min(60, z.W * 0.6 / Math.max(1, x1 - x0), (Hv - top) * 0.7 / Math.max(1, y1 - y0));
+    if (st.V && st.V.k >= k) return;
+    st.V = { W: z.W, H: z.H, k: k, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2 - (z.H - Hv - top) / (2 * k) };
+  }
+  /* контур дома по углам в его системе координат; углы и привязки к ним сохраняются (порядок тот же) */
+  function setHouseLocal(b, Q) {
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity; Q.forEach(function (q) { x0 = Math.min(x0, q.x); y0 = Math.min(y0, q.y); x1 = Math.max(x1, q.x); y1 = Math.max(y1, q.y); });
+    var c = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 }, a = b.angle * Math.PI / 180, r = pwToB(ptsToPw(Q));
+    b.x = Math.round((b.x + c.x * Math.cos(a) - c.y * Math.sin(a)) * 1e4) / 1e4; b.y = Math.round((b.y + c.x * Math.sin(a) + c.y * Math.cos(a)) * 1e4) / 1e4;
+    b.shape = 'poly'; b.h0 = r.h0; b.walls = r.walls; b.w = Math.max(1, r1(x1 - x0)); b.l = Math.max(1, r1(y1 - y0));
+  }
+  /* точная длина стены i. Конец стены уходит вдоль неё, вместе с ним — углы до «встречной» стены
+     (параллельной, лучше обратного направления и похожей длины: у бокового выступа — его вторая сторона,
+     у боковой стены дома — противоположная). Остальные стены не меняются, углы остаются прямыми. */
+  function wallLen(i, v) {
+    var b = B(), Q0 = C.houseLocal(b).map(function (q) { return { x: q.x, y: q.y }; }), n = Q0.length, a = Q0[i], c = Q0[(i + 1) % n], L = Math.hypot(c.x - a.x, c.y - a.y);
+    if (!(v > 0.05 && v < 300) || L < 1e-6) { toast('Проверьте длину стены', true); render(); return false; }
+    var ux = (c.x - a.x) / L, uy = (c.y - a.y) / L, dl = v - L, cand = [];
+    if (Math.abs(dl) < 0.0005) return true;
+    for (var s = 1; s < n; s++) {
+      var k = (i + s) % n, p = Q0[k], q = Q0[(k + 1) % n], lk = Math.hypot(q.x - p.x, q.y - p.y); if (lk < 1e-6) continue;
+      var dot = ((q.x - p.x) * ux + (q.y - p.y) * uy) / lk; if (Math.abs(Math.abs(dot) - 1) > 0.001) continue;
+      var nl = dot < 0 ? lk + dl : lk - dl; if (nl <= 0.05) continue;
+      cand.push({ s: s, opp: dot < 0, score: (dot < 0 ? 0 : 1000) + Math.abs(lk - L) });
+    }
+    cand.sort(function (x, y) { return x.score - y.score; });
+    for (var ci = 0; ci < cand.length; ci++) {
+      var Q = Q0.map(function (q) { return { x: q.x, y: q.y }; });
+      for (var m = 1; m <= cand[ci].s; m++) { var vi = (i + m) % n; Q[vi] = { x: Q[vi].x + ux * dl, y: Q[vi].y + uy * dl }; }
+      if (pwSimple(ptsToPw(Q))) { commit(function () { setHouseLocal(B(), Q); }); return true; }
+    }
+    toast('Так не получится — стены пересекутся. Попробуйте потянуть стену на схеме', true); render(); return false;
+  }
+  function dwPanel() {
+    var D = dw(), n = D.pts.length;
+    var h = '<div class="card"><h3>Нарисуйте дом на схеме</h3><div class="how">' +
+      '<i class="' + (n ? 'done' : 'now') + '">1</i><span>Коснитесь схемы — первый угол <b>A</b></span>' +
+      '<i class="' + (n >= 3 ? 'done' : n ? 'now' : '') + '">2</i><span>Ставьте следующие углы — стены встают под прямым углом. Можно вести пальцем: длина видна до отпускания</span>' +
+      '<i class="' + (n >= 3 ? 'now' : '') + '">3</i><span>Коснитесь угла <b>A</b> — дом замкнётся</span></div>' +
+      (n ? '<p class="muted">Углов: ' + n + (n >= 2 ? ' · последняя стена ' + fmt(Math.hypot(D.pts[n - 1].x - D.pts[n - 2].x, D.pts[n - 1].y - D.pts[n - 2].y)) + ' м' : '') + '</p>' : '') +
+      '<div class="btns"><button class="btn sm" data-act="pwUndo"' + (n ? '' : ' disabled') + '>↶ Убрать угол</button><button class="btn sm pri" data-act="pwClose"' + (n >= 3 ? '' : ' disabled') + '>Замкнуть</button>' + (n ? '<button class="btn sm" data-act="dwRestart">Заново</button>' : '') + '</div>' +
+      '<p class="muted">Шаг 10 см. Точные размеры стен потом можно вписать.</p></div>';
+    return h;
+  }
+  function wallsPanel() {
+    var b = B(), Q = C.houseLocal(b), n = Q.length, selI = st.sel && st.sel.k === 'wall' ? st.sel.i : st.pop && st.pop.type === 'wall' ? st.pop.i : null;
+    var h = '<div class="card"><h3>Стены дома</h3><p class="muted">Тяните номер стены на схеме — стена сдвинется, углы останутся прямыми. Нажмите на номер — впишите точную длину.</p><div class="pwlist">';
+    Q.forEach(function (q, i) {
+      var r = Q[(i + 1) % n];
+      h += '<div class="pwrow w2' + (i === selI ? ' sel' : '') + '" data-pwi="' + i + '"><b>' + (i + 1) + '</b><span>' + C.lt(i) + '→' + C.lt((i + 1) % n) + '</span><input data-pw="' + i + '" inputmode="decimal" value="' + fmt(Math.hypot(r.x - q.x, r.y - q.y)) + '" aria-label="Длина стены ' + (i + 1) + ', м"><em>м</em></div>';
+    });
+    return h + '</div><button class="btn sm" data-act="redraw">Перерисовать дом</button></div>';
+  }
+  function dwSvg() {
+    var D = st.draw; if (!D) return '';
+    var V = st.V, S = function (q) { return [(q.x - V.cx) * V.k + V.W / 2, V.H / 2 - (q.y - V.cy) * V.k]; }, P = D.pts, s = '', pr = D.prev;
+    var lab = function (a, b, txt, acc) { var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, w = txt.length * 7.6 + 12; return '<rect x="' + (mx - w / 2) + '" y="' + (my - 12) + '" width="' + w + '" height="22" rx="6" fill="' + (acc ? '#BF512D' : '#fff') + '" stroke="' + (acc ? '#BF512D' : '#C9C1B3') + '"/><text x="' + mx + '" y="' + (my + 4) + '" text-anchor="middle" font-size="13" font-weight="800" fill="' + (acc ? '#fff' : '#1B1815') + '">' + txt + '</text>'; };
+    if (P.length > 1) s += '<polyline points="' + P.map(function (q) { var a = S(q); return a[0].toFixed(1) + ',' + a[1].toFixed(1); }).join(' ') + '" fill="none" stroke="#1B1815" stroke-width="3" stroke-linejoin="miter"/>';
+    if (pr && P.length) {
+      var a = S(P[P.length - 1]), b = S(pr.p);
+      if (pr.guide) { var g = S(pr.guide); s += '<line x1="' + g[0] + '" y1="' + g[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="#2F6B45" stroke-width="1.4" stroke-dasharray="4 4"/>'; }
+      s += '<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="#BF512D" stroke-width="3" stroke-dasharray="8 5"/>';
+      if (!pr.close) s += lab(a, b, fmt(pr.len) + ' м', true);
+    }
+    for (var i = 1; i < P.length; i++) { var sa = S(P[i - 1]), sb = S(P[i]); if (Math.hypot(sb[0] - sa[0], sb[1] - sa[1]) > 46) s += lab(sa, sb, fmt(Math.hypot(P[i].x - P[i - 1].x, P[i].y - P[i - 1].y)) + '', false); }
+    P.forEach(function (q, i) {
+      var a = S(q);
+      if (i === 0 && P.length >= 3) s += '<circle cx="' + a[0] + '" cy="' + a[1] + '" r="' + (pr && pr.close ? 22 : 16) + '" fill="rgba(191,81,45,' + (pr && pr.close ? '.28' : '.14') + ')" stroke="#BF512D" stroke-width="2.5"/>';
+      s += '<circle cx="' + a[0] + '" cy="' + a[1] + '" r="5" fill="#1B1815"/><text x="' + (a[0] + 10) + '" y="' + (a[1] - 10) + '" font-size="14" font-weight="800" fill="#BF512D" stroke="#FAF9F4" stroke-width="3" paint-order="stroke">' + C.lt(i) + '</text>';
+    });
+    if (pr) { var z = S(pr.p); s += '<circle cx="' + z[0] + '" cy="' + z[1] + '" r="9" fill="#fff" stroke="#BF512D" stroke-width="3"/>'; }
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + V.W + '" height="' + V.H + '" style="position:absolute;left:0;top:0;pointer-events:none" font-family="Golos Text, Arial, sans-serif">' + s + '</svg>';
+  }
+  function toPoly() {
+    var b = B(); if (!b || b.shape === 'poly') return;
+    var loc = C.houseLocal(b), list = ptsToPw(loc), map = {};
+    loc.forEach(function (q, i) { map[q.id] = 'w' + (i + 1); });
+    commit(function () {
+      var r = pwToB(list); b.shape = 'poly'; b.h0 = r.h0; b.walls = r.walls;
+      doc.anchors.forEach(function (a) { if (map[a.v]) a.v = map[a.v]; });
+      var ev = {}; Object.keys(b.elev || {}).forEach(function (k) { ev[map[k] || k] = b.elev[k]; }); b.elev = ev;
+    });
+    toast('Теперь форму можно менять по стенам — привязки и отметки сохранены');
   }
 
   function pAnchors() {
@@ -768,6 +1048,12 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
         '<div class="row"><input id="popIn" inputmode="decimal" value="' + fmt(inf.dist) + '" aria-label="Расстояние, м"><span class="unit">м</span></div>' +
         '<p>Дом сдвинется ' + (a.kind === 'p2p' ? 'вдоль этого размера' : 'перпендикулярно стороне ' + inf.seg.n) + ', форма и поворот не меняются.</p>' +
         '<div class="btns"><button class="btn pri" data-act="popOk" style="flex:1">Готово</button><button class="btn danger" data-act="popDel">Удалить размер</button></div>';
+    } else if (p.type === 'wall') {
+      var Qw = B() ? C.houseLocal(B()) : [], nw = Qw.length; if (!nw || p.i >= nw) { st.pop = null; el.hidden = true; return; }
+      var qa1 = Qw[p.i], qb1 = Qw[(p.i + 1) % nw];
+      h = '<button class="x" data-act="popClose" aria-label="Закрыть">×</button><h3>Стена ' + (p.i + 1) + ' · ' + C.lt(p.i) + '→' + C.lt((p.i + 1) % nw) + '</h3>' +
+        '<div class="row"><input id="popIn" inputmode="decimal" value="' + fmt(Math.hypot(qb1.x - qa1.x, qb1.y - qa1.y)) + '" aria-label="Длина стены, м"><span class="unit">м</span></div>' +
+        '<p>Следующая стена сдвинется параллельно, углы останутся прямыми.</p><div class="btns"><button class="btn pri" data-act="popOk" style="flex:1">Готово</button></div>';
     } else if (p.type === 'elev') {
       var E = C.elevInfo(doc), hv = C.houseWorld(B()), i = hv.findIndex(function (v) { return v.id === p.vid; }); if (i < 0) { st.pop = null; el.hidden = true; return; }
       var raw = (B().elev || {})[p.vid];
@@ -779,6 +1065,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   }
   function popApply(next) {
     var p = st.pop, v = num(($('popIn') || {}).value);
+    if (p.type === 'wall') { if (wallLen(p.i, v)) { toast('Стена ' + (p.i + 1) + ': ' + fmt(v) + ' м'); st.pop = null; render(); } return; }
     if (p.type === 'anchor') {
       var a = anchorById(p.id);
       if (!(v >= 0) || v > 5000) { toast('Введите расстояние в метрах', true); return; }
@@ -828,6 +1115,17 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     toast('Три точки привязки: ' + letter(p1.id) + ', ' + letter(p2.id) + ', ' + letter(p3.id));
   }
 
+  /* ---------- подтверждение внутри страницы ---------- */
+  var dlgCb = null;
+  function ask(o) {
+    var el = $('dlg'); dlgCb = o.fn;
+    el.innerHTML = '<div class="box"><h3>' + esc(o.title) + '</h3>' + (o.text ? '<p>' + esc(o.text) + '</p>' : '') + '<div class="btns"><button class="btn ' + (o.danger ? 'danger' : 'pri') + '" data-dlg="ok">' + esc(o.ok) + '</button><button class="btn" data-dlg="cancel">Отмена</button></div></div>';
+    el.hidden = false; $('menu').hidden = true; var b = el.querySelector('[data-dlg="ok"]'); if (b) b.focus();
+  }
+  function dlgClose() { $('dlg').hidden = true; $('dlg').innerHTML = ''; }
+  $('dlg').addEventListener('click', function (e) { var b = e.target.closest('[data-dlg]'); if (!b) { if (e.target === this) { dlgClose(); dlgCb = null; } return; } var f = b.getAttribute('data-dlg') === 'ok' ? dlgCb : null; dlgCb = null; dlgClose(); if (f) f(); });
+  $('dlg').addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); dlgCb = null; dlgClose(); } });
+
   /* ---------- действия ---------- */
   function dl(name, data, type) {
     var b = new Blob([data], { type: type }), u = URL.createObjectURL(b), a = document.createElement('a');
@@ -841,10 +1139,10 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     return d;
   }
   var A = {
-    undo: undo, redo: redo,
+    undo: function () { if (drawOn() && dw().pts.length) return dwUndo(); undo(); }, redo: redo,
     menu: function () { var m = $('menu'), o = m.hidden; m.hidden = !o; $('bMenu').setAttribute('aria-expanded', String(o)); $('mV2').hidden = !st.v2; },
     zin: function () { var z = size(); zoomAt(1.4, z.W / 2, z.H / 2); }, zout: function () { var z = size(); zoomAt(1 / 1.4, z.W / 2, z.H / 2); }, fit: function () { fit(); paint(); },
-    'new': function () { if (!confirm('Начать новый проект? Текущий останется в истории только если вы сохранили файл.')) return; setDoc(C.blankDoc(), 'Новый проект'); go('parcel'); },
+    'new': function () { ask({ title: 'Начать новый проект?', text: 'Схема очистится. Если передумаете — нажмите «Отменить» ↶ вверху, прежний проект вернётся.', ok: 'Начать новый проект', fn: function () { setDoc(C.blankDoc()); st.pw = []; go('parcel'); toast('Новый проект'); } }); },
     open: function () { $('file').value = ''; $('file').click(); },
     save: function () { doc.revision = (doc.revision || 0) + 1; persist(); dl(fname('json'), JSON.stringify(doc, null, 1), 'application/json'); toast('Файл проекта сохранён'); },
     svg: function () { var V = C.fitView(doc, 1200, 900, 60); dl(fname('svg'), C.drawScene(doc, V, { mode: 'print' }).replace('width="100%"', 'width="1200" height="900"'), 'image/svg+xml'); },
@@ -852,10 +1150,11 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     example: function () { setDoc(example(), 'Открыт пример с вымышленными данными'); },
     preview: function () { openPrint(); },
     makeRect: function () { var W = num($('rW').value), D = num($('rD').value); st.rectW = $('rW').value; st.rectD = $('rD').value; if (!(W > 1 && D > 1 && W < 2000 && D < 2000)) { toast('Введите размеры участка в метрах', true); return; } commit(function () { C.rectParcel(doc, W, D); doc.parcel.labels = { 'p1>p2': 'дорога' }; }); fit(); paint(); toast('Участок ' + fmt(W, 1) + ' × ' + fmt(D, 1) + ' м. Нижняя сторона подписана «дорога»'); },
-    resetParcel: function () { if (!confirm('Удалить границу участка? Привязки к ней пропадут.')) return; commit(function () { doc.parcel = C.blankDoc().parcel; doc.anchors = []; }); },
+    resetParcel: function () { ask({ title: 'Удалить границу участка?', text: 'Привязки к ней пропадут. Вернуть можно кнопкой «Отменить» ↶.', ok: 'Удалить границу', danger: true, fn: function () { commit(function () { doc.parcel = C.blankDoc().parcel; doc.anchors = []; }); } }); },
     addVert: function () { var s = st.sel && st.sel.k === 'seg' ? segByKey(st.sel.id) : null; if (!s) return; commit(function () { var v = doc.parcel.verts, i = v.indexOf(s.b), nv = { id: C.uid('p'), x: r2((s.a.x + s.b.x) / 2), y: r2((s.a.y + s.b.y) / 2) }; if (i <= 0) v.push(nv); else v.splice(i, 0, nv); st.sel = { k: 'v', id: nv.id }; }); },
     delVert: function () { if (!st.sel || st.sel.k !== 'v') return; var id = st.sel.id; commit(function () { doc.parcel.verts = doc.parcel.verts.filter(function (v) { return v.id !== id; }); st.sel = null; }); },
     placeHouse: function () {
+      if (st.hShape === 'pts') return dwClose();
       var W = num($('hW').value), L = num($('hL').value); st.hW = $('hW').value; st.hL = $('hL').value;
       if (st.hShape === 'L') { st.hA = $('hA').value; st.hC = $('hC').value; }
       if (!(W > 1 && L > 1 && W < 300 && L < 300)) { toast('Введите размеры дома в метрах', true); return; }
@@ -863,12 +1162,17 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
       commit(function () { var b = C.newBuilding(st.hShape, c.x, c.y); b.w = W; b.l = L; if (st.hShape === 'L') { b.cutW = num(st.hA) > 0 ? num(st.hA) : W / 3; b.cutL = num(st.hC) > 0 ? num(st.hC) : L / 3; } b.angle = road ? Math.round(normA(segAngle(road)) * 10) / 10 : 0; if (Math.abs(b.angle) === 180) b.angle = 0; b.name = 'Дом ' + fmt(W, 1) + ' × ' + fmt(L, 1) + ' м'; b.elev = {}; doc.building = b; doc.anchors = []; });
       toast('Дом поставлен. Перетащите его на место');
     },
-    delHouse: function () { if (!confirm('Удалить дом вместе с привязками и отметками?')) return; commit(function () { doc.building = null; doc.anchors = []; }); },
+    toPoly: function () { toPoly(); },
+    pwClose: function () { dwClose(); },
+    pwUndo: function () { dwUndo(); },
+    dwRestart: function () { st.draw = null; dw(); render(); },
+    redraw: function () { ask({ title: 'Перерисовать дом?', text: 'Контур, привязки и отметки углов удалятся. Вернуть можно кнопкой «Отменить» ↶.', ok: 'Перерисовать', danger: true, fn: function () { commit(function () { doc.building = null; doc.anchors = []; }); st.hShape = 'pts'; st.draw = null; dw(); st.sel = null; render(); if (isM()) shTo('peek'); } }); },
+    delHouse: function () { ask({ title: 'Удалить дом?', text: 'Вместе с ним удалятся привязки и отметки углов. Вернуть можно кнопкой «Отменить» ↶.', ok: 'Удалить дом', danger: true, fn: function () { commit(function () { doc.building = null; doc.anchors = []; }); } }); },
     auto: autoAnchors,
     cancelPick: function () { st.pickV = st.pickS = null; render(); },
     cancelPlace: function () { st.place = null; render(); },
     deselect: function () { st.sel = null; render(); },
-    clearElev: function () { if (!confirm('Очистить все отметки углов?')) return; commit(function () { B().elev = {}; }); },
+    clearElev: function () { ask({ title: 'Очистить все отметки углов?', ok: 'Очистить отметки', danger: true, fn: function () { commit(function () { B().elev = {}; }); } }); },
     flipLine: function () { var o = objById(st.sel.id); commit(function () { var x = o.x, y = o.y; o.x = o.x2; o.y = o.y2; o.x2 = x; o.y2 = y; }); },
     oalign: function () { var o = objById(st.sel.id), ss = segList(), best = null; ss.forEach(function (s) { var dd = C.segDist({ x: o.x, y: o.y }, s.a, s.b); if (!best || dd < best.d) best = { d: dd, s: s }; }); if (best) commit(function () { o.rot = Math.round(normA(segAngle(best.s)) * 10) / 10; }); },
     popOk: function () { popApply(false); }, popNext: function () { popApply(true); },
@@ -882,7 +1186,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     if (k === 'step') return go(v);
     if (k === 'selSeg') { st.sel = st.sel && st.sel.k === 'seg' && st.sel.id === v ? null : { k: 'seg', id: v }; render(); return; }
     if (k === 'tag') { var kk = p[1], lab = p.slice(2).join(':'); commit(function () { if (lab) doc.parcel.labels[kk] = lab; else delete doc.parcel.labels[kk]; }); return; }
-    if (k === 'hshape') { st.hShape = v; render(); return; }
+    if (k === 'hshape') { st.hShape = v; if (v === 'pts') { dw(); if (isM()) { shTo('peek'); fit(); } } render(); return; }
     if (k === 'hcorner') { commit(function () { B().corner = v; }); return; }
     if (k === 'rot') { commit(function () { B().angle = Math.round(normA(B().angle + num(v)) * 10) / 10; }); return; }
     if (k === 'alignSide') { var s = segByKey(v); if (s) commit(function () { var a = normA(segAngle(s)); B().angle = Math.round(a * 10) / 10; }); return; }
@@ -910,10 +1214,12 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   }
   panel.addEventListener('input', function (e) {
     var t = e.target;
+    if (t.id === 'pwL') { st.pwL = t.value; return; }
     if (t.dataset.f && !t.dataset.commit) { setPath(t.dataset.f, t.value); persistSoon(); if (t.dataset.f === 'm.address') renderTop(); if (t.dataset.f === 'o.name' || t.dataset.f.indexOf('m.slope') === 0) paintSoon(); }
   });
   panel.addEventListener('change', function (e) {
     var t = e.target;
+    if (t.dataset.pw != null) { var pi = +t.dataset.pw; st.sel = { k: 'wall', i: pi }; if (wallLen(pi, num(t.value))) toast('Стена ' + (pi + 1) + ': ' + fmt(num(t.value)) + ' м — соседние стены подстроились'); return; }
     if (t.dataset.f && t.dataset.commit) { var ok; commit(function () { ok = setPath(t.dataset.f, t.value); }); if (ok === false) { toast('Проверьте число', true); render(); } return; }
     if (t.dataset.f) { renderSteps(); return; }
     if (t.dataset.rect) {
@@ -951,6 +1257,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   function dragMode(hit) {
     var s = st.step, h = hit.split(':')[0];
     if (s === 'parcel' && h === 'v') return 'vertex';
+    if (s === 'house' && h === 'hw' && pwHouse()) return 'wall';
     if ((s === 'house' || s === 'anchors') && h === 'house') return 'house';
     if (s === 'house' && h === 'rot') return 'rotHouse';
     if (s === 'anchors' && h === 'al') return 'label';
@@ -961,9 +1268,10 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     if (e.button && e.button !== 0) return;
     try { cv.setPointerCapture(e.pointerId); } catch (er) {}
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    if (ptrs.size === 2) { var q = Array.from(ptrs.values()); pinch = { d: Math.hypot(q[0].x - q[1].x, q[0].y - q[1].y) || 1, k: st.V.k, m: { x: (q[0].x + q[1].x) / 2, y: (q[0].y + q[1].y) / 2 }, w: world((q[0].x + q[1].x) / 2, (q[0].y + q[1].y) / 2) }; if (drag && drag.mode && drag.snap) { doc = JSON.parse(drag.snap); } drag = null; return; }
+    if (ptrs.size === 2) { var q = Array.from(ptrs.values()); pinch = { d: Math.hypot(q[0].x - q[1].x, q[0].y - q[1].y) || 1, k: st.V.k, m: { x: (q[0].x + q[1].x) / 2, y: (q[0].y + q[1].y) / 2 }, w: world((q[0].x + q[1].x) / 2, (q[0].y + q[1].y) / 2) }; if (drag && drag.mode && drag.snap) { doc = JSON.parse(drag.snap); } drag = null; if (st.draw) st.draw.prev = null; paintSoon(); return; }
     var he = e.target.closest('[data-hit]');
     drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY, lx: e.clientX, ly: e.clientY, hit: he ? he.getAttribute('data-hit') : '', moved: false, mode: null, snap: null };
+    if (drawOn() && ptrs.size === 1) { drag.mode = 'draw'; drag.moved = true; dw().prev = dwSnap(world(e.clientX, e.clientY)); paintSoon(); }
   });
   cv.addEventListener('pointermove', function (e) {
     if (!ptrs.has(e.pointerId)) return;
@@ -988,6 +1296,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     if (pinch) { if (ptrs.size < 2) pinch = null; return; }
     if (!drag || drag.id !== e.pointerId) return;
     var d = drag; drag = null;
+    if (d.mode === 'draw') { if (drawOn()) dwAdd(world(e.clientX, e.clientY)); return; }
     if (!d.moved) tap(d.hit, world(e.clientX, e.clientY));
     else if (d.mode !== 'pan') endDrag(d);
   }
@@ -997,6 +1306,13 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
 
   function startDrag(d, e) {
     var h = d.hit.split(':'), w = world(e.clientX, e.clientY);
+    if (d.mode === 'wall') {
+      var Q0 = C.houseLocal(B()).map(function (q) { return { x: q.x, y: q.y }; }), n0 = Q0.length, i0 = +h[1], qa = Q0[i0], qb = Q0[(i0 + 1) % n0], L0 = Math.hypot(qb.x - qa.x, qb.y - qa.y) || 1;
+      d.i = i0; d.Q0 = Q0; d.w0 = world(d.sx, d.sy); d.b0 = JSON.stringify({ x: B().x, y: B().y }); d.nx = -(qb.y - qa.y) / L0; d.ny = (qb.x - qa.x) / L0; d.lo = -1e4; d.hi = 1e4;
+      /* соседние стены не должны стать короче 10 см */
+      [[(i0 + n0 - 1) % n0, i0, 1], [(i0 + 1) % n0, (i0 + 2) % n0, -1]].forEach(function (e2) { var p1 = Q0[e2[0]], p2 = Q0[e2[1]], vx = p2.x - p1.x, vy = p2.y - p1.y, s2 = (vx * d.nx + vy * d.ny) * e2[2], len = Math.hypot(vx, vy); if (Math.abs(Math.abs(s2) - len) > 0.01) return; if (s2 > 0) d.lo = Math.max(d.lo, 0.1 - len); else d.hi = Math.min(d.hi, len - 0.1); });
+      st.sel = { k: 'wall', i: i0 }; st.pop = null;
+    }
     if (d.mode === 'rotHouse') { d.a0 = B().angle; d.p0 = Math.atan2(w.y - B().y, w.x - B().x) * 180 / Math.PI; }
     if (d.mode === 'obj' || d.mode === 'objEnd' || d.mode === 'objRot' || d.mode === 'objRes') { d.o = objById(h[1]); st.sel = { k: 'obj', id: h[1] }; st.place = null; if (d.mode === 'objRot') { d.a0 = d.o.rot || 0; d.p0 = Math.atan2(w.y - d.o.y, w.x - d.o.x) * 180 / Math.PI; } }
     if (d.mode === 'vertex') { st.sel = { k: 'v', id: h[1] }; }
@@ -1013,6 +1329,13 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
     var V = st.V, dx = (e.clientX - d.lx) / V.k, dy = -(e.clientY - d.ly) / V.k, w = world(e.clientX, e.clientY), h = d.hit.split(':');
     switch (d.mode) {
       case 'pan': V.cx -= dx; V.cy -= dy; break;
+      case 'draw': if (st.draw) st.draw.prev = dwSnap(w); break;
+      case 'wall': if (d.Q0) {
+        var bb = B(), a0 = bb.angle * Math.PI / 180, wx = w.x - d.w0.x, wy = w.y - d.w0.y, lx2 = wx * Math.cos(-a0) - wy * Math.sin(-a0), ly2 = wx * Math.sin(-a0) + wy * Math.cos(-a0);
+        var tt = Math.max(d.lo, Math.min(d.hi, r1(lx2 * d.nx + ly2 * d.ny))), Q = d.Q0.map(function (q) { return { x: q.x, y: q.y }; }), n2 = Q.length;
+        [d.i, (d.i + 1) % n2].forEach(function (j) { Q[j] = { x: Q[j].x + d.nx * tt, y: Q[j].y + d.ny * tt }; });
+        var keep = JSON.parse(d.b0); bb.x = keep.x; bb.y = keep.y; setHouseLocal(bb, Q); d.t = tt;
+      } break;
       case 'vertex': doc.parcel.verts.forEach(function (v) { if (v.id === h[1]) { v.x += dx; v.y += dy; } }); if (doc.parcel.source === 'rect') doc.parcel.source = 'drawn'; break;
       case 'house': B().x += dx; B().y += dy; break;
       case 'rotHouse': B().angle = snapAng(d.a0 + normA(Math.atan2(w.y - B().y, w.x - B().x) * 180 / Math.PI - d.p0)); break;
@@ -1041,7 +1364,10 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
       else st.sel = null;
       render(); return;
     }
-    if (s === 'house') { st.sel = null; render(); return; }
+    if (s === 'house') {
+      if (k === 'hw' && pwHouse()) { st.sel = null; st.pop = { type: 'wall', i: +h[1] }; render(); focusPop(); return; }
+      st.sel = null; render(); return;
+    }
     if (s === 'anchors') {
       if (!B() || !closed()) return;
       if (k === 'hv') { var vid = h[1]; if (st.pickS) return addAnchor(vid, st.pickS); st.pickV = st.pickV === vid ? null : vid; st.pop = null; render(); return; }
@@ -1131,6 +1457,7 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
   function tEnd() { if (SH.t && SH.t.on) dEnd(); SH.t = null; }
   panel.addEventListener('touchend', tEnd); panel.addEventListener('touchcancel', tEnd);
   /* поле ввода — лист на весь экран, чтобы клавиатура его не закрыла */
+  panel.addEventListener('focusin', function (e) { var r = e.target.closest && e.target.closest('[data-pwi]'); if (r) { var wi = +r.getAttribute('data-pwi'); if (!st.sel || st.sel.k !== 'wall' || st.sel.i !== wi) { st.sel = { k: 'wall', i: wi }; [].forEach.call(panel.querySelectorAll('.pwrow'), function (x) { x.classList.toggle('sel', x === r); }); var pv = $('pwPrev'); if (pv) pv.outerHTML = pwSvg(pwGet(), wi); paint(); } } });
   panel.addEventListener('focusin', function (e) { var el = e.target; if (isM() && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) && el.type !== 'checkbox' && SH.det !== 'full') shTo('full'); });
   function shMode() {
     if (isM()) { shMetrics(); shSet(SH.D[SH.det]); shSettle(); }
@@ -1207,22 +1534,32 @@ details.more>.in{padding:2px 14px 14px;display:flex;flex-direction:column;gap:12
       '</div>' : '';
     var el = $('print');
     el.innerHTML = '<div class="pbar"><button class="tbtn" data-pact="close">← К схеме</button><button class="tbtn pri" data-pact="print">Печать / PDF</button>' +
-      '<button class="tbtn" data-pact="split">' + (doc.print.split ? 'Убрать лист 2' : '+ Лист 2: таблицы') + '</button><p>Печать браузера — принтер или «Сохранить как PDF», A4.</p></div>' + p1 + p2;
+      '<button class="tbtn" data-pact="split">' + (doc.print.split ? 'Убрать лист 2' : '+ Лист 2<span class="lbl">: таблицы</span>') + '</button><p>Печать браузера — принтер или «Сохранить как PDF», A4.</p></div>' + '<div class="sheetwrap">' + p1 + '</div>' + (p2 ? '<div class="sheetwrap">' + p2 + '</div>' : '');
     el.hidden = false;
-    fitSheets();
-    /* схема занимает всё свободное место листа — рисуем её под точный размер */
-    var box = el.querySelector('.ascheme'), r = box.getBoundingClientRect(), asp = r.width > 0 ? r.height / r.width : 0.6;
-    box.innerHTML = C.drawScene(doc, C.fitView(doc, 660, Math.max(180, Math.round(660 * asp)), 28), { mode: 'print' });
+    drawActScheme(); fitSheets();
+    /* лист поменял высоту (догрузился шрифт, длинный текст) — обёртка подстраивается */
+    if (window.ResizeObserver) { if (st.sheetRO) st.sheetRO.disconnect(); st.sheetRO = new ResizeObserver(function () { if (!el.hidden) fitSheets(); }); [].forEach.call(el.querySelectorAll('.sheet'), function (s) { st.sheetRO.observe(s); }); }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (!el.hidden && el.querySelector('.ascheme')) { drawActScheme(); fitSheets(); } });
+  }
+  /* схема занимает всё свободное место листа — рисуем её под точный размер (размеры без учёта масштаба) */
+  function drawActScheme() {
+    var box = $('print').querySelector('.ascheme'); if (!box) return;
+    var w = box.offsetWidth, h = box.offsetHeight, asp = w > 0 && h > 0 ? h / w : 0.6;
+    box.innerHTML = C.drawScene(doc, C.fitView(doc, 660, Math.max(240, Math.round(660 * asp)), 28), { mode: 'print' });
   }
   /* на узком экране лист уменьшается целиком, чтобы выглядел как на бумаге; при печати — 1:1 */
   function fitSheets() {
-    var z = Math.min(1, (window.innerWidth - 16) / 794);
-    document.querySelectorAll('#print .sheet').forEach(function (s) { s.style.zoom = z < 1 ? String(Math.round(z * 1000) / 1000) : ''; });
+    var vw = document.documentElement.clientWidth || window.innerWidth, z = Math.min(1, (vw - 16) / 794);
+    document.querySelectorAll('#print .sheetwrap').forEach(function (wr) {
+      var s = wr.firstElementChild; if (!s) return;
+      s.style.transform = z < 1 ? 'scale(' + z.toFixed(4) + ')' : '';
+      wr.style.width = Math.floor(s.offsetWidth * z) + 'px'; wr.style.height = Math.ceil(s.offsetHeight * z) + 'px';
+    });
   }
   window.addEventListener('resize', function () { if (!$('print').hidden) fitSheets(); });
   $('print').addEventListener('click', function (e) {
     var b = e.target.closest('[data-pact]'); if (!b) return;
-    if (b.dataset.pact === 'close') { $('print').hidden = true; $('print').innerHTML = ''; }
+    if (b.dataset.pact === 'close') { if (st.sheetRO) { st.sheetRO.disconnect(); st.sheetRO = null; } $('print').hidden = true; $('print').innerHTML = ''; }
     if (b.dataset.pact === 'print') { try { window.print(); } catch (er) { toast('Печать недоступна здесь — сохраните файл и откройте на компьютере', true); } }
     if (b.dataset.pact === 'split') { commit(function () { doc.print.split = !doc.print.split; }); openPrint(); }
   });
